@@ -2,7 +2,6 @@ import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 
 import {WeatherService} from '../shared/services/weather';
-import {XLarge} from './directives/x-large';
 
 @Component({
   selector: 'home',
@@ -10,8 +9,7 @@ import {XLarge} from './directives/x-large';
     WeatherService
   ],
   directives: [
-    ...FORM_DIRECTIVES,
-    XLarge
+    ...FORM_DIRECTIVES
   ],
   pipes: [ ],
   styles: [ require('./home.css') ],
