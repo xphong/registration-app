@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RegistrationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RegistrationApplication.class, args);
+        SpringApplication.run(RegistrationApplication.class, args);
 	}
 }
