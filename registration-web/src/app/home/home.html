@@ -1,0 +1,31 @@
+<div class="row weather">
+  <div>
+    <div id="form-control" class="col-xs-12 form-area">
+      <form (ngSubmit)="searchForWeather()">
+        <input [(ngModel)]="city" type="text" class="form-control" placeholder="City" required>
+        <div *ngIf="errorMessage">
+          <span class="help-block">{{errorMessage}}</span>
+        </div>
+        <button type="submit" class="go-btn btn btn-lg btn-success btn-block">Search</button>
+      </form>
+    </div>
+    <div *ngIf="forecasts.length" class="reveal-animation">
+      <table class="table reveal-animation">
+        <tr>
+          <th>Date</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Wind</th>
+          <th>Pressure</th>
+        </tr>
+        <tr *ngFor="#forecast of forecasts">
+          <td>{{forecast.date}}</td>
+          <td>{{forecast.temp}}</td>
+          <td>{{forecast.humidity}}</td>
+          <td>{{forecast.wind}}</td>
+          <td>{{forecast.pressure}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

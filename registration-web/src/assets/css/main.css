@@ -1,0 +1,37 @@
+.header {
+  margin-bottom: 0;
+}
+.navbar {
+  border-radius: 0;
+}
+  .navbar .navbar-brand {
+      color: #FFF;
+  }
+.dropdown-btn {
+  cursor: pointer;
+}
+  .dropdown-btn:hover .dropdown {
+    display: block;
+  }
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: #222222;
+  z-index: 5;
+}
+  .dropdown > li > a {
+    display: block;
+    color: #9d9d9d;
+    padding: 15px;
+    white-space: nowrap;
+  }
+    .dropdown > li > a:hover,
+    .dropdown > li > a:focus {
+      text-decoration: none;
+      color: #fff;
+    }

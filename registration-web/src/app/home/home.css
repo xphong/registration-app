@@ -1,0 +1,30 @@
+.weather {
+  margin: 40px 0;
+}
+  .weather .form-area {
+    text-align: center;
+  }
+  .weather .form-control {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+  .weather .go-btn {
+    margin: 15px auto 50px auto;
+    width: 100%;
+    border-radius: 0;
+    font-size: 14px;
+    padding: 4px 0;
+  }
+  .weather .help-block {
+    margin-top: 15px;
+  }
+
+@media screen and (min-width: 768px) {
+  .weather .go-btn {
+    width: 10%;
+  }
+  .weather .form-control {
+    width: 40%
+  }
+}
