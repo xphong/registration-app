@@ -20,6 +20,14 @@ public class User {
     @Size(min = 8, max = 30, message = "Password must at least 8 characters.")
     private String password;
 
+    public User() { }
+
+    public User(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }
