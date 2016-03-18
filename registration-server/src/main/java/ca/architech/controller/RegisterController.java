@@ -12,7 +12,9 @@ public class RegisterController {
     private UserService userService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public User register(@RequestBody User user) {
-        return userService.createUser(user);
+    public String register(@RequestBody User user) {
+        userService.createUser(user);
+
+        return "User successfully registered";
     }
 }
