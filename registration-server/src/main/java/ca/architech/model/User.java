@@ -3,11 +3,13 @@ package ca.architech.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "users")
 public class User {
     public static final int USERNAME_MIN_LENGTH = 5;
     public static final int USERNAME_MAX_LENGTH = 50;
