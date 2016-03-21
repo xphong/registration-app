@@ -18,8 +18,11 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody User user) {
-        userService.createUser(user);
+        if (userService.findByUsername(user.getUsername()) != null) {
+            return new ResponseEntity<>("Username is in use", HttpStatus.BAD_REQUEST);
+        }
 
+        userService.createUser(user);
         return new ResponseEntity<>("Account created successfully.", HttpStatus.CREATED);
     }
 }

@@ -21,7 +21,11 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
         return user;
+    }
+
+    public User findByUsername(String username) {
+        return userRepository.findOneByUsername(username);
     }
 }
