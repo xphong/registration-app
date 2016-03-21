@@ -1,12 +1,12 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 
-import {WeatherService} from '../shared/services/weather';
+import {RegistrationService} from '../shared/services/registration';
 
 @Component({
   selector: 'home',
   providers: [
-    WeatherService
+    RegistrationService
   ],
   directives: [
     ...FORM_DIRECTIVES
@@ -16,11 +16,12 @@ import {WeatherService} from '../shared/services/weather';
   template: require('./home.html')
 })
 export class Home {
-  forecasts = [];
-  city = '';
+  username = '';
+  password = '';
   errorMessage = '';
+  successMessage = '';
 
-  constructor(public weatherService: WeatherService) {
+  constructor(public registrationService: RegistrationService) {
 
   }
 
@@ -28,20 +29,25 @@ export class Home {
     console.log('hello `Home` component');
   }
 
-  searchForWeather() {
-    this.weatherService.getForecast(this.city)
+  register() {
+    let user = {
+      'username': this.username,
+      'password': this.password
+    };
+
+    this.registrationService.registerUser(user)
         .subscribe(data => {
           if (data) {
-            this.forecasts = data;
             this.errorMessage = '';
+            this.successMessage = 'Account successfully created';
           } else {
-            this.forecasts = [];
-            this.errorMessage = 'No forecasts found for this city';
+            this.errorMessage = 'Error';
+            this.successMessage = '';
           }
         },
         error => {
-          this.forecasts = [];
-          this.errorMessage = error.message;
+          this.errorMessage = error;
+          this.successMessage = '';
         }
         );
   }

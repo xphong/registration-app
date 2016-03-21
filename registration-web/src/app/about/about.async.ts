@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
   template: require('./about.html')
 })
 export class About {
-  title = 'Weather App';
+  title = 'Registration App';
 
   constructor() {
 

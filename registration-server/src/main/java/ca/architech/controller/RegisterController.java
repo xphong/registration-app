@@ -23,6 +23,6 @@ public class RegisterController {
         }
 
         userService.createUser(user);
-        return new ResponseEntity<>("Account created successfully.", HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }

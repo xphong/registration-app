@@ -1,30 +1,39 @@
-.weather {
+.registration {
   margin: 40px 0;
 }
-  .weather .form-area {
+  .registration .registration-header {
+    margin: 30px 0;
+  }
+  .registration .form-area {
     text-align: center;
   }
-  .weather .form-control {
+  .registration .form-control {
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 0;
   }
-  .weather .go-btn {
+  .registration .go-btn {
     margin: 15px auto 50px auto;
     width: 100%;
     border-radius: 0;
     font-size: 14px;
     padding: 4px 0;
   }
-  .weather .help-block {
+  .registration .help-block {
     margin-top: 15px;
+  }
+  .registration .help-block.error {
+    color: red;
+  }
+  .registration .help-block.success {
+    color: green;
   }
 
 @media screen and (min-width: 768px) {
-  .weather .go-btn {
-    width: 10%;
+  .registration .go-btn {
+    width: 40%;
   }
-  .weather .form-control {
+  .registration .form-control {
     width: 40%
   }
 }
