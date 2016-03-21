@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-### Back-End Server
+### Back-End Server (:8080)
 
 To run dev server:
 
@@ -10,7 +10,7 @@ To run dev server:
 mvn spring-boot:run
 ```
 
-### Front-End Web App
+### Front-End Web App (:3000)
 
 To run dev server:
 
@@ -36,7 +36,6 @@ npm test
 * Angular 2
 * TypeScript
 * Webpack
-
 * Spring Boot
 * Spring Data JPA
 * H2 Embedded Database
