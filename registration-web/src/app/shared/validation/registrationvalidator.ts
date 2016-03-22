@@ -24,7 +24,7 @@ export class RegistrationValidator {
   }
 
   static validatePassword(control: Control): ValidationResult {
-    let regex = /^.*(?=.*\d)(?=.*[a-zA-Z]).*$/;
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
 
     if (!regex.test(control.value)) {
       return { 'validatePassword': true };

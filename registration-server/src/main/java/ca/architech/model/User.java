@@ -25,7 +25,7 @@ public class User {
     @Size(min = USERNAME_MIN_LENGTH, max = USERNAME_MAX_LENGTH, message = "Username must at least 5 characters.")
     private String username;
 
-    @Pattern(regexp = "^.*(?=.*\\d)(?=.*[a-zA-Z]).*$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
     @NotNull
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH, message = "Password must at least 8 characters.")
     private String password;
