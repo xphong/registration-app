@@ -1,4 +1,4 @@
-import { Control } from "angular2/common";
+import { Control } from 'angular2/common';
 
 interface ValidationResult {
   [key: string]: boolean;
@@ -6,7 +6,7 @@ interface ValidationResult {
 
 export class RegistrationValidator {
   static startsWithNumber(control: Control): ValidationResult {
-    if (control.value != '' && !isNaN(control.value.charAt(0))) {
+    if (control.value !== '' && !isNaN(control.value.charAt(0))) {
       return {'startsWithNumber': true};
     }
 

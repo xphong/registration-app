@@ -6,7 +6,7 @@ describe('App', () => {
 
   it('should have a title', () => {
     let subject = browser.getTitle();
-    let result  = 'Weather App';
+    let result = 'Registration App';
     expect(subject).toEqual(result);
   });
 

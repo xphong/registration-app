@@ -26,7 +26,7 @@ export class Home {
 
   constructor(public registrationService: RegistrationService, public formBuilder: FormBuilder) {
     this.username = new Control(
-      '', 
+      '',
       Validators.compose([
         Validators.required,
         Validators.minLength(5),

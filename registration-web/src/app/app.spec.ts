@@ -16,7 +16,7 @@ describe('App', () => {
   ]);
 
   it('should have an app title', inject([ App ], (app) => {
-    expect(app.title).toEqual('Weather App');
+    expect(app.title).toEqual('Registration App');
   }));
 
 });

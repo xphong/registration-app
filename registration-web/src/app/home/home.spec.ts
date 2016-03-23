@@ -10,7 +10,7 @@ import {
 import {Component, provide} from 'angular2/core';
 import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
-
+import {RegistrationService} from '../shared/services/registration';
 
 // Load the implementations that should be tested
 import {Home} from './home';
@@ -20,6 +20,7 @@ describe('Home', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
+    RegistrationService,
     provide(Http, {
       useFactory: function(backend, defaultOptions) {
         return new Http(backend, defaultOptions);
@@ -28,10 +29,6 @@ describe('Home', () => {
     }),
     Home
   ]);
-
-  it('should have default forecasts', inject([ Home ], (home) => {
-    expect(home.forecasts).toEqual([]);
-  }));
 
   it('should log ngOnInit', inject([ Home ], (home) => {
     spyOn(console, 'log');

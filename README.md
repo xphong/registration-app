@@ -43,5 +43,5 @@ npm test
 * Junit/Mockito/Hamcrest
 
 ## TODO
-* Testing
+* Write tests
 * Login
