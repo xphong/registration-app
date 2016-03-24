@@ -1,4 +1,4 @@
-package ca.architech.config;
+package ca.phonghuynh.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

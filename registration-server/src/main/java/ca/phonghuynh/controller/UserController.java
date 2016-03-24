@@ -1,6 +1,6 @@
-package ca.architech.controller;
+package ca.phonghuynh.controller;
 
-import ca.architech.service.UserService;
+import ca.phonghuynh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

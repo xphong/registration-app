@@ -1,7 +1,7 @@
-package ca.architech.service;
+package ca.phonghuynh.service;
 
-import ca.architech.model.User;
-import ca.architech.repository.UserRepository;
+import ca.phonghuynh.model.User;
+import ca.phonghuynh.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

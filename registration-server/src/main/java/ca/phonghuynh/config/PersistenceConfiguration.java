@@ -1,4 +1,4 @@
-package ca.architech.config;
+package ca.phonghuynh.config;
 
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;

@@ -1,8 +1,8 @@
-package ca.architech.controller;
+package ca.phonghuynh.controller;
 
-import ca.architech.exception.UsernameInUseException;
-import ca.architech.model.User;
-import ca.architech.service.UserService;
+import ca.phonghuynh.exception.UsernameInUseException;
+import ca.phonghuynh.model.User;
+import ca.phonghuynh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

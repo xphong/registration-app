@@ -1,4 +1,4 @@
-package ca.architech;
+package ca.phonghuynh;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

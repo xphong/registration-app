@@ -1,4 +1,4 @@
-package ca.architech.model;
+package ca.phonghuynh.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
