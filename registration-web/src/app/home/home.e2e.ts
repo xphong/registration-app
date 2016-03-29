@@ -1,4 +1,4 @@
-describe('App', () => {
+describe('Home', () => {
 
   beforeEach(() => {
     browser.get('/#/home');
@@ -22,59 +22,50 @@ describe('App', () => {
     expect(subject).toEqual(result);
   });
 
-  // it('should display error message for forecast not found', () => {
-  //   let textBox = element(by.css('.registration input[type=text]'));
-  //   let submitButton = element(by.css('.registration button[type=submit]'));
-  //   let table;
+  it('should display error message for username validation', () => {
+    let textBox = element(by.id('username-textbox'));
 
-  //   textBox.clear();
-  //   textBox.sendKeys('12313211231321').then(() => {
-  //     submitButton.click();
+    textBox.clear();
+    textBox.sendKeys('a').then(() => {
+      browser.findElement(by.css('.help-block.username')).then((el) => {
+        expect(el.isDisplayed()).toBe(true);
+      });
+    });
+  });
 
-  //     browser.sleep(1000);
+  it('should display error message for password validation', () => {
+    let textBox = element(by.id('password-textbox'));
 
-  //     browser.findElement(by.css('.help-block')).then((el) => {
-  //       expect(el.isDisplayed()).toBe(true);
-  //     });
+    textBox.clear();
+    textBox.sendKeys('a').then(() => {
+      browser.findElement(by.css('.help-block.password')).then((el) => {
+        expect(el.isDisplayed()).toBe(true);
+      });
+    });
+  });
 
-  //     table = element(by.css('.table')).isPresent();
-  //     expect(table).toEqual(false)
-  //   });
-  // });
+  it('should register user on click', () => {
+    let usernameTextBox = element(by.id('username-textbox'));
+    let passwordTextBox = element(by.id('password-textbox'));
+    let submitButton = element(by.id('registration-submit'));
+    let result = true;
 
-  // it('should search city for forecast on click', () => {
-  //   let textBox = element(by.css('.registration input[type=text]'));
-  //   let submitButton = element(by.css('.registration button[type=submit]'));
-  //   let result  = true;
+    let randomUsername = 'Test' + Math.floor(Math.random() * 9999) + 1;
 
-  //   textBox.clear();
-  //   textBox.sendKeys('Toronto').then(() => {
-  //     submitButton.click();
+    usernameTextBox.clear();
+    passwordTextBox.clear();
 
-  //     browser.sleep(500);
+    usernameTextBox.sendKeys(randomUsername).then(() => {
+      passwordTextBox.sendKeys('Testpassword1').then(() => {
+        submitButton.click();
 
-  //     browser.findElement(by.css('.table')).then((el) => {
-  //       expect(el.isDisplayed()).toBe(result);
-  //     });
-  //   });
+        browser.sleep(500);
 
-  // });
+        browser.findElement(by.css('.help-block.success')).then((el) => {
+          expect(el.isDisplayed()).toBe(result);
+        });
+      });
+    });
 
-  // it('should search city for forecast on enter', () => {
-  //   let textBox = element(by.css('.registration input[type=text]'));
-  //   let submitButton = element(by.css('.registration button[type=submit]'));
-  //   let result  = true;
-
-  //   textBox.clear();
-  //   textBox.sendKeys('Toronto').then(() => {
-  //     textBox.sendKeys(protractor.Key.ENTER);
-
-  //     browser.sleep(500);
-
-  //     browser.findElement(by.css('.table')).then((el) => {
-  //       expect(el.isDisplayed()).toBe(result);
-  //     });
-  //   });
-  // });
-
+  });
 });
