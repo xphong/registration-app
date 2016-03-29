@@ -37,11 +37,6 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.async\.ts$/,
-        loaders: ['es6-promise-loader', 'ts-loader'],
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
-      },
-      {
         test: /\.ts$/,
         loader: 'ts-loader',
         query: {
