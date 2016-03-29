@@ -10,7 +10,7 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 var metadata = {
-  title: 'Weather App',
+  title: 'Registration App',
   baseUrl: '/',
   host: 'localhost',
   port: 3000,
