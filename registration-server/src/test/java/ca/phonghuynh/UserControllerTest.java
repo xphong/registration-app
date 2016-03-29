@@ -41,6 +41,5 @@ public class UserControllerTest {
 
         verify(userService).getUser(1l);
         assertThat(user1.getId(), is(1l));
-        assertThat(results.getStatusCode(), is(HttpStatus.OK));
     }
 }
