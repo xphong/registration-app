@@ -1,5 +1,7 @@
 # registration-app
 
+[![Build Status](https://travis-ci.org/xphong/registration-app.svg?branch=master)](https://travis-ci.org/xphong/registration-app) [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
+
 ## Quickstart
 
 ### Back-End Server (:8080)
