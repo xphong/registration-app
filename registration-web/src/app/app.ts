@@ -8,7 +8,7 @@ import {Home} from './home/home';
 
 @Component({
   selector: 'app',
-  providers: [RegistrationService, ...FORM_PROVIDERS],
+  providers: [RegistrationService, FORM_PROVIDERS],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
   pipes: [],
   template: require('./app.html')

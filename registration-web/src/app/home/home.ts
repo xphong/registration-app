@@ -6,9 +6,7 @@ import {RegistrationValidator} from '../shared/validation/registrationvalidator'
 
 @Component({
   selector: 'home',
-  directives: [
-    ...FORM_DIRECTIVES
-  ],
+  directives: [...FORM_DIRECTIVES],
   pipes: [ ],
   styles: [ require('./home.css') ],
   template: require('./home.html')
