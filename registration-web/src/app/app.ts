@@ -3,11 +3,12 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './shared/directives/router-active';
+import {RegistrationService} from './shared/services/registration';
 import {Home} from './home/home';
 
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
+  providers: [RegistrationService, ...FORM_PROVIDERS],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
   pipes: [],
   template: require('./app.html')

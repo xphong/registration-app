@@ -6,9 +6,6 @@ import {RegistrationValidator} from '../shared/validation/registrationvalidator'
 
 @Component({
   selector: 'home',
-  providers: [
-    RegistrationService
-  ],
   directives: [
     ...FORM_DIRECTIVES
   ],
