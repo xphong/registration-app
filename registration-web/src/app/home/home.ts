@@ -19,7 +19,7 @@ export class Home {
   errorMessage = '';
   successMessage = '';
 
-  constructor(public registrationService: RegistrationService, public formBuilder: FormBuilder) {
+  constructor(private registrationService: RegistrationService, private formBuilder: FormBuilder) {
     this.username = new Control(
       '',
       Validators.compose([

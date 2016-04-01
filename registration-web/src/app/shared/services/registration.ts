@@ -9,7 +9,7 @@ export class RegistrationService {
     'Content-Type': 'application/json'
   });
 
-  constructor(public http: Http) {
+  constructor(private http: Http) {
 
   }
 
