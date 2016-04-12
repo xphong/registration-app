@@ -4,6 +4,7 @@ import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './shared/directives/router-active';
 import {RegistrationService} from './shared/services/registration';
+import {About} from './about/about';
 import {Home} from './home/home';
 
 @Component({
@@ -15,7 +16,7 @@ import {Home} from './home/home';
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Home' },
-  { path: '/about', loader: () => require('./about/about')('About'), name: 'About' },
+  { path: '/about', component: About, name: 'About' },
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class App {
