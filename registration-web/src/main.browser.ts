@@ -20,6 +20,6 @@ document.addEventListener('DOMContentLoaded', function main() {
     ...ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy })
   ])
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));
 
 });
