@@ -19,7 +19,35 @@ export class Home {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private registrationService: RegistrationService, private formBuilder: FormBuilder) {
+  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder) {
+    this._createForm();
+  }
+
+  ngOnInit() {
+    console.log('hello `Home` component');
+  }
+
+  register() {
+    console.log(this.form.value);
+    this._registrationService.registerUser(this.form.value)
+        .subscribe(data => {
+          if (data) {
+            this.errorMessage = '';
+            this.successMessage = 'Account successfully created';
+            this._createForm();
+          } else {
+            this.errorMessage = 'Error';
+            this.successMessage = '';
+          }
+        },
+        error => {
+          this.errorMessage = error;
+          this.successMessage = '';
+        }
+        );
+  }
+
+  _createForm() {
     this.username = new Control(
       '',
       Validators.compose([
@@ -41,33 +69,10 @@ export class Home {
       ])
     );
 
-    this.form = formBuilder.group({
+    this.form = this._formBuilder.group({
       username:  this.username,
       password: this.password
     });
-  }
-
-  ngOnInit() {
-    console.log('hello `Home` component');
-  }
-
-  register() {
-    console.log(this.form.value);
-    this.registrationService.registerUser(this.form.value)
-        .subscribe(data => {
-          if (data) {
-            this.errorMessage = '';
-            this.successMessage = 'Account successfully created';
-          } else {
-            this.errorMessage = 'Error';
-            this.successMessage = '';
-          }
-        },
-        error => {
-          this.errorMessage = error;
-          this.successMessage = '';
-        }
-        );
   }
 
 }
