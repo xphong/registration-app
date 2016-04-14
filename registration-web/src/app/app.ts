@@ -6,18 +6,22 @@ import {RouterActive} from './shared/directives/router-active';
 import {RegistrationService} from './shared/services/registration';
 import {About} from './about/about';
 import {Home} from './home/home';
+import {Register} from './register/register';
+import {Login} from './login/login';
 
 @Component({
   selector: 'app',
   providers: [RegistrationService, FORM_PROVIDERS],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
+  directives: [ROUTER_DIRECTIVES, RouterActive],
   pipes: [],
   template: require('./app.html')
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Home' },
   { path: '/about', component: About, name: 'About' },
-  { path: '/**', redirectTo: ['Home'] }
+  { path: '/register', component: Register, name: 'Register' },
+  { path: '/login', component: Login, name: 'Login' },
+  { path: '/**', redirectTo: ['Home'] },
 ])
 export class App {
   title = 'Registration App';
