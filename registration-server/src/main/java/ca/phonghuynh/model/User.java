@@ -13,8 +13,10 @@ import javax.validation.constraints.Size;
 public class User {
     public static final int USERNAME_MIN_LENGTH = 5;
     public static final int USERNAME_MAX_LENGTH = 50;
+    public static final String USERNAME_LENGTH_ERROR_MESSAGE = "Username must at least 5 characters.";
     public static final int PASSWORD_MIN_LENGTH = 8;
     public static final int PASSWORD_MAX_LENGTH = 50;
+    public static final String PASSWORD_LENGTH_ERROR_MESSAGE = "Password must at least 8 characters.";
 
     @GeneratedValue
     @Id
@@ -22,12 +24,12 @@ public class User {
 
     @Pattern(regexp = "^[A-Za-z0-9]*$")
     @NotNull
-    @Size(min = USERNAME_MIN_LENGTH, max = USERNAME_MAX_LENGTH, message = "Username must at least 5 characters.")
+    @Size(min = USERNAME_MIN_LENGTH, max = USERNAME_MAX_LENGTH, message = USERNAME_LENGTH_ERROR_MESSAGE)
     private String username;
 
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
     @NotNull
-    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH, message = "Password must at least 8 characters.")
+    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH, message = PASSWORD_LENGTH_ERROR_MESSAGE)
     private String password;
 
     public User() { }
