@@ -1,11 +1,11 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from 'angular2/common';
 
-import {Register} from '../register/register';
+import {Login} from '../login/login';
 
 @Component({
   selector: 'rg-home',
-  directives: [Register],
+  directives: [Login],
   pipes: [ ],
   template: require('./home.html')
 })

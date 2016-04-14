@@ -1,18 +1,17 @@
 import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from 'angular2/common';
+import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {RegistrationService} from '../shared/services/registration';
-import {RegistrationValidator} from '../shared/validation/registrationvalidator';
-import {Login} from '../login/login';
+import {Register} from '../register/register';
 
 @Component({
-  selector: 'rg-register',
+  selector: 'rg-login',
   directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES],
   pipes: [ ],
-  template: require('./register.html')
+  template: require('./login.html')
 })
-export class Register {
+export class Login {
   form: ControlGroup;
   username: Control;
   password: Control;
@@ -25,16 +24,16 @@ export class Register {
   }
 
   ngOnInit() {
-    console.log('hello `Register` component');
+    console.log('hello `Login` component');
   }
 
-  register() {
+  login() {
     console.log(this.form.value);
-    this._registrationService.registerUser(this.form.value)
+    this._registrationService.loginUser(this.form.value)
         .subscribe(data => {
           if (data) {
             this.errorMessage = '';
-            this.successMessage = 'Account successfully created';
+            this.successMessage = 'Login successful';
             this._createForm();
           } else {
             this.errorMessage = 'Error';
@@ -49,26 +48,9 @@ export class Register {
   }
 
   _createForm() {
-    this.username = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(50),
-        RegistrationValidator.startsWithNumber,
-        RegistrationValidator.alphaNumericValues
-      ])
-    );
+    this.username = new Control('');
 
-    this.password = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(50),
-        RegistrationValidator.validatePassword
-      ])
-    );
+    this.password = new Control('');
 
     this.form = this._formBuilder.group({
       username:  this.username,

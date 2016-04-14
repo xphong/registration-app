@@ -23,7 +23,7 @@ describe('Register', () => {
   });
 
   it('should display error message for username validation', () => {
-    let textBox = element(by.id('username-textbox'));
+    let textBox = element(by.id('register-username-textbox'));
 
     textBox.clear();
     textBox.sendKeys('a').then(() => {
@@ -34,7 +34,7 @@ describe('Register', () => {
   });
 
   it('should display error message for password validation', () => {
-    let textBox = element(by.id('password-textbox'));
+    let textBox = element(by.id('register-password-textbox'));
 
     textBox.clear();
     textBox.sendKeys('a').then(() => {
@@ -45,9 +45,9 @@ describe('Register', () => {
   });
 
   it('should register user on click', () => {
-    let usernameTextBox = element(by.id('username-textbox'));
-    let passwordTextBox = element(by.id('password-textbox'));
-    let submitButton = element(by.id('registration-submit'));
+    let usernameTextBox = element(by.id('register-username-textbox'));
+    let passwordTextBox = element(by.id('register-password-textbox'));
+    let submitButton = element(by.id('register-submit'));
     let result = true;
 
     let randomUsername = 'Test' + Math.floor(Math.random() * 9999) + 1;
@@ -67,4 +67,5 @@ describe('Register', () => {
       });
     });
   });
+
 });
