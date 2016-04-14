@@ -46,4 +46,3 @@ npm test
 
 ## TODO
 * Write tests
-* Login
