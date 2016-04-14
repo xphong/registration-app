@@ -29,11 +29,11 @@ export class Login {
 
   login() {
     console.log(this.form.value);
-    this._registrationService.registerUser(this.form.value)
+    this._registrationService.loginUser(this.form.value)
         .subscribe(data => {
           if (data) {
             this.errorMessage = '';
-            this.successMessage = 'Account successfully created';
+            this.successMessage = 'Login successful';
             this._createForm();
           } else {
             this.errorMessage = 'Error';

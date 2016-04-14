@@ -6,7 +6,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class RegistrationService {
-  apiUrl = 'http://localhost:8080/api/register';
+  apiUrl = 'http://localhost:8080/api/';
   apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
@@ -16,7 +16,17 @@ export class RegistrationService {
   }
 
   registerUser(user) {
-    return this.http.post(this.apiUrl, JSON.stringify(user), { headers: this.apiHeaders })
+    const registerUrl = this.apiUrl + 'register';
+
+    return this.http.post(registerUrl, JSON.stringify(user), { headers: this.apiHeaders })
+      .map(res => res.json())
+      .catch(this._handleError);
+  }
+
+  loginUser(user) {
+    const loginUrl = this.apiUrl + 'login';
+
+    return this.http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
       .catch(this._handleError);
   }

@@ -2,8 +2,8 @@
   <div id="login-form-control" class="col-xs-12 form-area">
     <h2 class="registration-header">Login</h2>
     <form (ngSubmit)="login()" [ngFormModel]="form">
-      <input id="login-username-textbox" type="text" class="form-control" placeholder="Username" ngControl="username">
-      <input id="login-password-textbox" type="password" class="form-control" placeholder="Password" ngControl="password">
+      <input id="login-username-textbox" type="text" class="form-control" placeholder="Username" ngControl="username" required>
+      <input id="login-password-textbox" type="password" class="form-control" placeholder="Password" ngControl="password" required>
       <div *ngIf="errorMessage">
         <span class="help-block error">{{errorMessage}}</span>
       </div>
