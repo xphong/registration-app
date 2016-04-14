@@ -1,0 +1,14 @@
+<div id="login-form-control" class="col-xs-12 form-area">
+  <h2 class="registration-header">Login</h2>
+  <form (ngSubmit)="login()" [ngFormModel]="form">
+    <input id="login-username-textbox" type="text" class="form-control" placeholder="Username" ngControl="username">
+    <input id="login-password-textbox" type="password" class="form-control" placeholder="Password" ngControl="password">
+    <div *ngIf="errorMessage">
+      <span class="help-block error">{{errorMessage}}</span>
+    </div>
+    <div *ngIf="successMessage">
+      <span class="help-block success">{{successMessage}}</span>
+    </div>
+    <button id="login-submit" type="submit" class="go-btn btn btn-lg btn-success btn-block">Login</button>
+  </form>
+</div>

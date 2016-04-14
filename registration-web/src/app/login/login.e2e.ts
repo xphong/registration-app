@@ -1,4 +1,4 @@
-describe('Home', () => {
+describe('Login', () => {
 
   beforeEach(() => {
     browser.get('/#/home');

@@ -1,7 +1,7 @@
-describe('Home', () => {
+describe('About', () => {
 
   beforeEach(() => {
-    browser.get('/#/home');
+    browser.get('/#/about');
   });
 
   it('should have a title', () => {

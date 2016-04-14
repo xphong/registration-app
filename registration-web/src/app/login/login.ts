@@ -1,16 +1,15 @@
 import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from 'angular2/common';
+import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup} from 'angular2/common';
 
 import {RegistrationService} from '../shared/services/registration';
-import {RegistrationValidator} from '../shared/validation/registrationvalidator';
 
 @Component({
-  selector: 'rg-register',
+  selector: 'rg-login',
   directives: [...FORM_DIRECTIVES],
   pipes: [ ],
-  template: require('./register.html')
+  template: require('./login.html')
 })
-export class Register {
+export class Login {
   form: ControlGroup;
   username: Control;
   password: Control;
@@ -23,10 +22,10 @@ export class Register {
   }
 
   ngOnInit() {
-    console.log('hello `Register` component');
+    console.log('hello `Login` component');
   }
 
-  register() {
+  login() {
     console.log(this.form.value);
     this._registrationService.registerUser(this.form.value)
         .subscribe(data => {
@@ -47,26 +46,9 @@ export class Register {
   }
 
   _createForm() {
-    this.username = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(50),
-        RegistrationValidator.startsWithNumber,
-        RegistrationValidator.alphaNumericValues
-      ])
-    );
+    this.username = new Control('');
 
-    this.password = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(50),
-        RegistrationValidator.validatePassword
-      ])
-    );
+    this.password = new Control('');
 
     this.form = this._formBuilder.group({
       username:  this.username,
