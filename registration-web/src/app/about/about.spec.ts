@@ -10,11 +10,9 @@ import {
 import {Component, provide} from 'angular2/core';
 import {BaseRequestOptions, Http} from 'angular2/http';
 
-// Load the implementations that should be tested
 import {About} from './about';
 
 describe('About', () => {
-  // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
     BaseRequestOptions,
     About
