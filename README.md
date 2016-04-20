@@ -41,8 +41,7 @@ npm test
 * Spring Boot
 * Spring Data JPA
 * H2 Embedded Database
-* Flyway DB
 * Junit/Mockito/Hamcrest
 
 ## TODO
-* Write tests
+* Write/Improve tests
