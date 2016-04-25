@@ -18,18 +18,18 @@ describe('RegistrationService', () => {
   const mockResponse = [
     {
       id: 1,
-      username: "TestUser1",
-      password: "TestPassword1"
+      username: 'TestUser1',
+      password: 'TestPassword1'
     },
     {
       id: 2,
-      username: "TestUser2",
-      password: "TestPassword2"
+      username: 'TestUser2',
+      password: 'TestPassword2'
     }
-  ]; 
+  ];
   const usersUrl = 'http://localhost:8080/api/users';
   const registerUrl = 'http://localhost:8080/api/register';
-  const loginUrl = 'http://localhost:8080/api/login'
+  const loginUrl = 'http://localhost:8080/api/login';
 
   beforeEachProviders(() => [
     BaseRequestOptions,

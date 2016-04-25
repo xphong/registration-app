@@ -1,3 +1,4 @@
+import {Input} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {isPresent} from 'angular2/src/facade/lang';
 import {
@@ -22,11 +23,10 @@ import {Instruction, RouterLink} from 'angular2/router';
  * ```
  */
 @Directive({
-  selector: '[router-active], [routerActive]',
-  inputs: ['routerActive']
+  selector: '[router-active], [routerActive]'
 })
 export class RouterActive {
-  routerActive: string = null;
+  @Input() routerActive: string = null;
   routerActiveAttr: string = 'active';
 
   constructor(

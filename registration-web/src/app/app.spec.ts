@@ -28,20 +28,20 @@ describe('App', () => {
 describe('Router', () => {
 
   let location, router;
-  
+
   beforeEachProviders(() => [
     RouteRegistry,
     provide(Location, {useClass: SpyLocation}),
     provide(Router, {useClass: RootRouter}),
     provide(ROUTER_PRIMARY_COMPONENT, {useValue: App})
   ]);
-  
+
   beforeEach(inject([Router, Location], (_router, _location) => {
     router = _router;
     location = _location;
   }));
-  
-  it('Should be able to navigate to Home', done => {    
+
+  it('Should be able to navigate to Home', done => {
     router.navigate(['Home']).then(() => {
       expect(location.path()).toBe('');
       done();
@@ -55,21 +55,21 @@ describe('Router', () => {
     }).catch(e => done.fail(e));
   });
 
-  it('Should be able to navigate to About', done => {    
+  it('Should be able to navigate to About', done => {
     router.navigate(['About']).then(() => {
       expect(location.path()).toBe('/about');
       done();
     }).catch(e => done.fail(e));
   });
 
-  it('Should be able to navigate to Login', done => {    
+  it('Should be able to navigate to Login', done => {
     router.navigate(['Login']).then(() => {
       expect(location.path()).toBe('/login');
       done();
     }).catch(e => done.fail(e));
   });
 
-  it('Should be able to navigate to Register', done => {    
+  it('Should be able to navigate to Register', done => {
     router.navigate(['Register']).then(() => {
       expect(location.path()).toBe('/register');
       done();
