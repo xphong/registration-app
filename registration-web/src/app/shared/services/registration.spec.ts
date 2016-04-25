@@ -52,7 +52,7 @@ describe('RegistrationService', () => {
     expect(!!registrationService._http).toEqual(true);
   });
 
-  it('should return mocked users response', done => {
+  it('should return users', done => {
     mockBackend.connections.subscribe(connection => {
       connection.mockRespond(new Response({ body: JSON.stringify(mockResponse) }));
       expect(connection.request.url).toEqual(usersUrl);
