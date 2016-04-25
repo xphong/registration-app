@@ -43,19 +43,19 @@ describe('RegistrationService', () => {
     RegistrationService
   ]);
 
-  beforeEach(inject([MockBackend, RegistrationService], (_mockBackend, _registrationService) => {
+  beforeEach(inject([ MockBackend, RegistrationService ], (_mockBackend, _registrationService) => {
     mockBackend = _mockBackend;
     registrationService = _registrationService;
   }));
 
-  it('should have http', inject([RegistrationService], (registration) => {
-    expect(!!registration.http).toEqual(true);
-  }));
+  it('should have http', () => {
+    expect(!!registrationService.http).toEqual(true);
+  });
 
   it('should return mocked users response', done => {
     mockBackend.connections.subscribe(connection => {
       connection.mockRespond(new Response({ body: JSON.stringify(mockResponse) }));
-      expect(connection.request.url).toBe(usersUrl);
+      expect(connection.request.url).toEqual(usersUrl);
     });
 
     registrationService.getUsers().subscribe(users => {
@@ -63,7 +63,7 @@ describe('RegistrationService', () => {
       expect(users[0].password).toEqual('TestPassword1');
       expect(users[1].username).toEqual('TestUser2');
       expect(users[1].password).toEqual('TestPassword2');
-      expect(users.length).toBe(2);
+      expect(users.length).toEqual(2);
       done();
     });
   });
@@ -76,7 +76,7 @@ describe('RegistrationService', () => {
 
     mockBackend.connections.subscribe(connection => {
       connection.mockRespond(new Response({ body: JSON.stringify(mockResponse[0]) }));
-      expect(connection.request.url).toBe(registerUrl);
+      expect(connection.request.url).toEqual(registerUrl);
     });
 
     registrationService.registerUser(user).subscribe(user => {
@@ -94,7 +94,7 @@ describe('RegistrationService', () => {
 
     mockBackend.connections.subscribe(connection => {
       connection.mockRespond(new Response({ body: JSON.stringify(mockResponse[0]) }));
-      expect(connection.request.url).toBe(loginUrl);
+      expect(connection.request.url).toEqual(loginUrl);
     });
 
     registrationService.loginUser(user).subscribe(user => {
