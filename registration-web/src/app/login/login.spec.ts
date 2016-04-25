@@ -12,11 +12,10 @@ import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 import {RegistrationService} from '../shared/services/registration';
 
-// Load the implementations that should be tested
 import {Login} from './login';
 
 describe('Login', () => {
-  // provide our implementations or mocks to the dependency injector
+
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
