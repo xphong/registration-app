@@ -49,7 +49,7 @@ describe('RegistrationService', () => {
   }));
 
   it('should have http', () => {
-    expect(!!registrationService.http).toEqual(true);
+    expect(!!registrationService._http).toEqual(true);
   });
 
   it('should return mocked users response', done => {
