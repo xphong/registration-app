@@ -15,6 +15,14 @@ export class RegistrationService {
 
   }
 
+  getUsers() {
+    const usersUrl = this.apiUrl + 'users';
+
+    return this.http.get(usersUrl)
+      .map(res => res.json())
+      .catch(this._handleError);
+  }
+
   registerUser(user) {
     const registerUrl = this.apiUrl + 'register';
 
