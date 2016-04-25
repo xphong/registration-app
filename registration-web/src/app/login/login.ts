@@ -28,7 +28,6 @@ export class Login {
   }
 
   login() {
-    console.log(this.form.value);
     this._registrationService.loginUser(this.form.value)
         .subscribe(data => {
           if (data) {

@@ -29,7 +29,6 @@ export class Register {
   }
 
   register() {
-    console.log(this.form.value);
     this._registrationService.registerUser(this.form.value)
         .subscribe(data => {
           if (data) {
