@@ -52,7 +52,7 @@ describe('Register', () => {
     expect(console.log).toHaveBeenCalled();
   }));
 
-  it('should open', injectAsync([TestComponentBuilder], (tcb) => {
+  it('should successfully register a user', injectAsync([TestComponentBuilder], (tcb) => {
       return tcb
         .createAsync(Register)
         .then(fixture => {

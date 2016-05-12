@@ -52,7 +52,7 @@ describe('Login', () => {
     expect(console.log).toHaveBeenCalled();
   }));
 
-  it('should open', injectAsync([TestComponentBuilder], (tcb) => {
+  it('should successfully login', injectAsync([TestComponentBuilder], (tcb) => {
       return tcb
         .createAsync(Login)
         .then(fixture => {

@@ -104,4 +104,20 @@ describe('RegistrationService', () => {
     });
   });
 
+  it('should return error for register user', done => {
+    const user = {
+      username: 'Test',
+      password: 'test'
+    };
+
+    mockBackend.connections.subscribe(connection => {
+      connection.mockError(new Error({ body: {message: 'error'}, status: 400 }));
+      expect(connection.request.url).toEqual(loginUrl);
+    });
+
+    registrationService.loginUser(user).subscribe(user => user, err => {
+      done();
+    });
+  });
+
 });
