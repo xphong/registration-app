@@ -2,6 +2,7 @@ import {
   it,
   inject,
   injectAsync,
+  beforeEach,
   beforeEachProviders,
   TestComponentBuilder
 } from 'angular2/testing';
