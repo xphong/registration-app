@@ -1,7 +1,7 @@
 describe('Register', () => {
 
   beforeEach(() => {
-    browser.get('/#/home');
+    browser.get('/#/register');
   });
 
   it('should have a title', () => {
