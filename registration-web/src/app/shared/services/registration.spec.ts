@@ -55,16 +55,25 @@ describe('RegistrationService', () => {
 
   it('should return users', done => {
     mockBackend.connections.subscribe(connection => {
-      connection.mockRespond(new Response({ body: JSON.stringify(mockResponse) }));
+      const options = new ResponseOptions({
+        body: {
+          users: mockResponse,
+          status: 200
+        }
+      });
+
+      const response = new Response(options);
+
+      connection.mockRespond(response);
       expect(connection.request.url).toEqual(usersUrl);
     });
 
-    registrationService.getUsers().subscribe(users => {
-      expect(users[0].username).toEqual('TestUser1');
-      expect(users[0].password).toEqual('TestPassword1');
-      expect(users[1].username).toEqual('TestUser2');
-      expect(users[1].password).toEqual('TestPassword2');
-      expect(users.length).toEqual(2);
+    registrationService.getUsers().subscribe(data => {
+      expect(data.users[0].username).toEqual('TestUser1');
+      expect(data.users[0].password).toEqual('TestPassword1');
+      expect(data.users[1].username).toEqual('TestUser2');
+      expect(data.users[1].password).toEqual('TestPassword2');
+      expect(data.users.length).toEqual(2);
       done();
     });
   });
@@ -75,14 +84,23 @@ describe('RegistrationService', () => {
       password: 'TestPassword1'
     };
 
+    const options = new ResponseOptions({
+      body: {
+        user: mockResponse[0],
+        status: 200
+      }
+    });
+
+    const response = new Response(options);
+
     mockBackend.connections.subscribe(connection => {
-      connection.mockRespond(new Response({ body: JSON.stringify(mockResponse[0]) }));
+      connection.mockRespond(response);
       expect(connection.request.url).toEqual(registerUrl);
     });
 
-    registrationService.registerUser(user).subscribe(user => {
-      expect(user.username).toEqual('TestUser1');
-      expect(user.password).toEqual('TestPassword1');
+    registrationService.registerUser(user).subscribe(data => {
+      expect(data.user.username).toEqual('TestUser1');
+      expect(data.user.password).toEqual('TestPassword1');
       done();
     });
   });
@@ -93,14 +111,23 @@ describe('RegistrationService', () => {
       password: 'TestPassword1'
     };
 
+    const options = new ResponseOptions({
+      body: {
+        user: mockResponse[0],
+        status: 200
+      }
+    });
+
+    const response = new Response(options);
+
     mockBackend.connections.subscribe(connection => {
-      connection.mockRespond(new Response({ body: JSON.stringify(mockResponse[0]) }));
+      connection.mockRespond(response);
       expect(connection.request.url).toEqual(loginUrl);
     });
 
-    registrationService.loginUser(user).subscribe(user => {
-      expect(user.username).toEqual('TestUser1');
-      expect(user.password).toEqual('TestPassword1');
+    registrationService.loginUser(user).subscribe(data => {
+      expect(data.user.username).toEqual('TestUser1');
+      expect(data.user.password).toEqual('TestPassword1');
       done();
     });
   });
@@ -112,7 +139,7 @@ describe('RegistrationService', () => {
     };
 
     mockBackend.connections.subscribe(connection => {
-      connection.mockError(new Error({ body: {message: 'error'}, status: 400 }));
+      connection.mockError(new Error('error'));
       expect(connection.request.url).toEqual(loginUrl);
     });
 
