@@ -54,16 +54,16 @@ describe('RegistrationService', () => {
   });
 
   it('should return users', done => {
+    const options = new ResponseOptions({
+      body: {
+        users: mockResponse,
+        status: 200
+      }
+    });
+
+    const response = new Response(options);
+    
     mockBackend.connections.subscribe(connection => {
-      const options = new ResponseOptions({
-        body: {
-          users: mockResponse,
-          status: 200
-        }
-      });
-
-      const response = new Response(options);
-
       connection.mockRespond(response);
       expect(connection.request.url).toEqual(usersUrl);
     });
