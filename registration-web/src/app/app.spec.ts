@@ -7,12 +7,12 @@ import {
   TestComponentBuilder
 } from 'angular2/testing';
 
-import {RootRouter} from 'angular2/src/router/router';
-import {Location, RouteParams, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
-import {SpyLocation} from 'angular2/src/mock/location_mock';
-import {provide} from 'angular2/core';
+import { RootRouter } from 'angular2/src/router/router';
+import { Location, RouteParams, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from 'angular2/router';
+import { SpyLocation } from 'angular2/src/mock/location_mock';
+import { provide } from 'angular2/core';
 
-import {App} from './app';
+import { App } from './app';
 
 describe('App', () => {
 

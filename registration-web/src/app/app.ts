@@ -1,13 +1,13 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
+import { Component } from 'angular2/core';
+import { RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
+import { FORM_PROVIDERS } from 'angular2/common';
 
-import {RouterActive} from './shared/directives/router-active';
-import {RegistrationService} from './shared/services/registration';
-import {About} from './about/about';
-import {Home} from './home/home';
-import {Register} from './register/register';
-import {Login} from './login/login';
+import { RouterActive } from './shared/directives/router-active';
+import { RegistrationService } from './shared/services/registration';
+import { About } from './about/about';
+import { Home } from './home/home';
+import { Register } from './register/register';
+import { Login } from './login/login';
 
 @Component({
   selector: 'app',

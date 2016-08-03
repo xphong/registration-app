@@ -7,10 +7,10 @@ import {
   TestComponentBuilder
 } from 'angular2/testing';
 
-import {Component, provide} from 'angular2/core';
-import {BaseRequestOptions, Http} from 'angular2/http';
+import { Component, provide } from 'angular2/core';
+import { BaseRequestOptions, Http } from 'angular2/http';
 
-import {About} from './about';
+import { About } from './about';
 
 describe('About', () => {
   beforeEachProviders(() => [

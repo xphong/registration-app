@@ -1,10 +1,10 @@
-import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from 'angular2/common';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import { Component } from 'angular2/core';
+import { FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup } from 'angular2/common';
+import { ROUTER_DIRECTIVES } from 'angular2/router';
 
-import {RegistrationService} from '../shared/services/registration';
-import {RegistrationValidator} from '../shared/validation/registrationvalidator';
-import {Login} from '../login/login';
+import { RegistrationService } from '../shared/services/registration';
+import { RegistrationValidator } from '../shared/validation/registrationvalidator';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'rg-register',

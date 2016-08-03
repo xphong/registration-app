@@ -9,16 +9,16 @@ import {
   setBaseTestProviders
 } from 'angular2/testing';
 
-import {TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS} from 'angular2/platform/testing/browser';
-import {Observable} from 'rxjs/Rx';
-import {provide} from 'angular2/core';
-import {RootRouter} from 'angular2/src/router/router';
-import {Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
-import {SpyLocation} from 'angular2/src/mock/location_mock';
+import { TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS } from 'angular2/platform/testing/browser';
+import { Observable } from 'rxjs/Rx';
+import { provide } from 'angular2/core';
+import { RootRouter } from 'angular2/src/router/router';
+import { Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from 'angular2/router';
+import { SpyLocation } from 'angular2/src/mock/location_mock';
 
-import {RegistrationService} from '../shared/services/registration';
-import {Login} from './login';
-import {App} from '../app';
+import { RegistrationService } from '../shared/services/registration';
+import { Login } from './login';
+import { App } from '../app';
 
 class MockRegistrationService {
   loginUser(user) {

@@ -7,11 +7,11 @@ import {
   TestComponentBuilder
 } from 'angular2/testing';
 
-import {Component, provide} from 'angular2/core';
-import {BaseRequestOptions, Http, Response, ResponseOptions} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
+import { Component, provide } from 'angular2/core';
+import { BaseRequestOptions, Http, Response, ResponseOptions } from 'angular2/http';
+import { MockBackend } from 'angular2/http/testing';
 
-import {RegistrationService} from './registration';
+import { RegistrationService } from './registration';
 
 describe('RegistrationService', () => {
 

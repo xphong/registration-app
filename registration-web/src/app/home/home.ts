@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from 'angular2/common';
+import { Component } from 'angular2/core';
+import { FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup } from 'angular2/common';
 
-import {Login} from '../login/login';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'rg-home',

@@ -7,9 +7,9 @@ import {
   TestComponentBuilder
 } from 'angular2/testing';
 
-import {Component, provide} from 'angular2/core';
+import { Component, provide } from 'angular2/core';
 
-import {Home} from './home';
+import { Home } from './home';
 
 describe('Home', () => {
   beforeEachProviders(() => [
