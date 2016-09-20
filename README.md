@@ -4,6 +4,23 @@
 
 ## Quickstart
 
+### Install Depedencies
+
+#### Front-End
+
+```
+cd registration-web
+```
+
+```
+npm install webpack-dev-server rimraf webpack -g 
+```
+
+```
+npm install
+```
+
+
 ### Back-End Server (:8080)
 
 To run dev server:
