@@ -1,25 +1,25 @@
-import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {HTTP_PROVIDERS} from 'angular2/http';
+/*
+ * Angular bootstraping
+ */
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { decorateModuleRef } from './app/environment';
+import { bootloader } from '@angularclass/hmr';
+/*
+ * App Module
+ * our top level module that holds all of our components
+ */
+import { AppModule } from './app';
 
-const ENV_PROVIDERS = [];
-
-if ('production' === process.env.ENV) {
-  enableProdMode();
-} else {
-  ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+/*
+ * Bootstrap our Angular app with a top level NgModule
+ */
+export function main(): Promise<any> {
+  return platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .then(decorateModuleRef)
+    .catch(err => console.error(err));
 }
 
-import {App} from './app/app';
-
-document.addEventListener('DOMContentLoaded', function main() {
-  bootstrap(App, [
-    ...ENV_PROVIDERS,
-    ...HTTP_PROVIDERS,
-    ...ROUTER_PROVIDERS,
-    provide(LocationStrategy, { useClass: HashLocationStrategy })
-  ])
-    .catch(err => console.error(err));
-
-});
+// needed for hmr
+// in prod this is replace for document ready
+bootloader(main);
