@@ -1,11 +1,11 @@
-import { Control } from 'angular2/common';
+import { FormControl } from '@angular/forms';
 
 interface ValidationResult {
   [key: string]: boolean;
 }
 
 export class RegistrationValidator {
-  static startsWithNumber(control: Control): ValidationResult {
+  static startsWithNumber(control: FormControl): ValidationResult {
     if (control.value !== '' && !isNaN(control.value.charAt(0))) {
       return {'startsWithNumber': true};
     }
@@ -13,7 +13,7 @@ export class RegistrationValidator {
     return null;
   }
 
-  static alphaNumericValues(control: Control): ValidationResult {
+  static alphaNumericValues(control: FormControl): ValidationResult {
     let regex = /^[A-Za-z0-9]*$/;
 
     if (!regex.test(control.value)) {
@@ -23,7 +23,7 @@ export class RegistrationValidator {
     return null;
   }
 
-  static validatePassword(control: Control): ValidationResult {
+  static validatePassword(control: FormControl): ValidationResult {
     let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
 
     if (!regex.test(control.value)) {

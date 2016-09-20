@@ -1,20 +1,16 @@
-import { Component } from 'angular2/core';
-import { FORM_DIRECTIVES, FormBuilder, Control, ControlGroup } from 'angular2/common';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { RegistrationService } from '../shared/services/registration';
-import { Register } from '../register/register';
 
 @Component({
   selector: 'rg-login',
-  directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES],
-  pipes: [ ],
-  template: require('./login.html')
+  templateUrl: './login.html'
 })
 export class Login {
-  form: ControlGroup;
-  username: Control;
-  password: Control;
+  form: FormGroup;
+  username = new FormControl('', Validators.required);
+  password = new FormControl('', Validators.required);
 
   errorMessage = '';
   successMessage = '';
@@ -47,10 +43,6 @@ export class Login {
   }
 
   _createForm() {
-    this.username = new Control('');
-
-    this.password = new Control('');
-
     this.form = this._formBuilder.group({
       username:  this.username,
       password: this.password
