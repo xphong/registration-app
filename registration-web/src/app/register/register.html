@@ -1,20 +1,20 @@
 <div class="row registration">
   <div id="register-form-control" class="col-xs-12 form-area">
     <h2 class="registration-header">Register</h2>
-    <form (ngSubmit)="register()" [ngFormModel]="form">
+    <form (ngSubmit)="register()" [formGroup]="form">
       <div class="help-block error username" *ngIf="username.dirty && !username.valid">
         <p *ngIf="username.errors.required">Username is required</p>
         <p *ngIf="username.errors.startsWithNumber">Username can't start with a number</p>
         <p *ngIf="username.errors.alphaNumericValues">Username accepts alpha-numeric values only</p>
         <p *ngIf="username.errors.minlength">Username has to be at least 5 characters</p>
       </div>
-      <input id="register-username-textbox" type="text" class="form-control" placeholder="Username" ngControl="username">
+      <input id="register-username-textbox" type="text" class="form-control" placeholder="Username" [formControl]="username">
       <div class="help-block error password" *ngIf="password.dirty && !password.valid">
         <p *ngIf="password.errors.required">Password is required</p>
         <p *ngIf="password.errors.minlength">Password has to be at least 8 characters</p>
         <p *ngIf="password.errors.validatePassword">Password requires 1 number, 1 uppercase, and 1 lowercase character</p>
       </div>
-      <input id="register-password-textbox" type="password" class="form-control" placeholder="Password" ngControl="password">
+      <input id="register-password-textbox" type="password" class="form-control" placeholder="Password" [formControl]="password">
       <div *ngIf="errorMessage">
         <span class="help-block error">{{errorMessage}}</span>
       </div>
@@ -24,7 +24,7 @@
       <button id="register-submit" type="submit" class="go-btn btn btn-lg btn-success btn-block" [disabled]="!form.valid">Register</button>
     </form>
     <div class="row">
-      <a href="" [routerLink]="['Login']">Login</a>
+      <a [routerLink]="['../login']">Login</a>
     </div>  
   </div>
 </div>

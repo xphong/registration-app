@@ -1,6 +1,5 @@
-import { Component } from 'angular2/core';
-import { FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup } from 'angular2/common';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { RegistrationService } from '../shared/services/registration';
 import { RegistrationValidator } from '../shared/validation/registrationvalidator';
@@ -8,14 +7,28 @@ import { Login } from '../login/login';
 
 @Component({
   selector: 'rg-register',
-  directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES],
-  pipes: [ ],
   template: require('./register.html')
 })
 export class Register {
-  form: ControlGroup;
-  username: Control;
-  password: Control;
+  form: FormGroup;
+  username = new FormControl(
+    '',
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(50),
+      RegistrationValidator.startsWithNumber,
+      RegistrationValidator.alphaNumericValues
+    ])
+  );
+  password = new FormControl('',
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(50),
+      RegistrationValidator.validatePassword
+    ])
+  );
 
   errorMessage = '';
   successMessage = '';
@@ -48,27 +61,6 @@ export class Register {
   }
 
   _createForm() {
-    this.username = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(50),
-        RegistrationValidator.startsWithNumber,
-        RegistrationValidator.alphaNumericValues
-      ])
-    );
-
-    this.password = new Control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(50),
-        RegistrationValidator.validatePassword
-      ])
-    );
-
     this.form = this._formBuilder.group({
       username:  this.username,
       password: this.password
