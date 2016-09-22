@@ -1,24 +1,38 @@
-import {
-  it,
-  inject,
-  injectAsync,
-  beforeEach,
-  beforeEachProviders,
-  TestComponentBuilder
-} from 'angular2/testing';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { async, inject, TestBed } from '@angular/core/testing';
 
-import { RootRouter } from 'angular2/src/router/router';
-import { Location, RouteParams, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from 'angular2/router';
-import { SpyLocation } from 'angular2/src/mock/location_mock';
-import { provide } from 'angular2/core';
+import { App } from './app.component';
 
-import { App } from './app';
+@Component({
+  template: ''
+})
+class Home { }
+
+@Component({
+  template: ''
+})
+class About { }
+
+@Component({
+  template: ''
+})
+class Register { }
+
+@Component({
+  template: ''
+})
+class Login { }
 
 describe('App', () => {
 
-  beforeEachProviders(() => [
-    App
-  ]);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ App ]
+    });
+  });
 
   it('should have an app title', inject([ App ], (app) => {
     expect(app.title).toEqual('Registration App');
@@ -28,53 +42,61 @@ describe('App', () => {
 
 describe('Router', () => {
 
-  let location, router;
+  const Routes = [
+    { path: '',      component: Home },
+    { path: 'home',  component: Home },
+    { path: 'about', component: About },
+    { path: 'register', component: Register },
+    { path: 'login', component: Login },
+    { path: '**',    component: Home }
+  ];
 
-  beforeEachProviders(() => [
-    RouteRegistry,
-    provide(Location, {useClass: SpyLocation}),
-    provide(Router, {useClass: RootRouter}),
-    provide(ROUTER_PRIMARY_COMPONENT, {useValue: App})
-  ]);
+  let location, router, fixture;
 
-  beforeEach(inject([Router, Location], (_router, _location) => {
-    router = _router;
-    location = _location;
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [ RouterTestingModule.withRoutes(Routes) ],
+      declarations: [
+        App,
+        Home,
+        About,
+        Register,
+        Login
+      ]
+    })
+    .compileComponents();
   }));
 
-  it('Should be able to navigate to Home', done => {
-    router.navigate(['Home']).then(() => {
-      expect(location.path()).toBe('');
-      done();
-    }).catch(e => done.fail(e));
-  });
+  beforeEach(inject([Router, Location], (_router: Router, _location: Location) => {
+    location = _location;
+    router = _router;
 
-  it('should redirect not registered urls to Home', done => {
-    router.navigateByUrl('/unknown').then(() => {
-      expect(location.path()).toBe('');
-      done();
-    }).catch(e => done.fail(e));
-  });
+    fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+  }));
 
-  it('Should be able to navigate to About', done => {
-    router.navigate(['About']).then(() => {
+  it('should be able to navigate to Home', async(() => {
+    router.navigate(['/home']).then(() => {
+      expect(location.path()).toBe('/home');
+    });
+  }));
+
+  it('should be able to navigate to About', async(() => {
+    router.navigate(['/about']).then(() => {
       expect(location.path()).toBe('/about');
-      done();
-    }).catch(e => done.fail(e));
-  });
+    });
+  }));
 
-  it('Should be able to navigate to Login', done => {
-    router.navigate(['Login']).then(() => {
-      expect(location.path()).toBe('/login');
-      done();
-    }).catch(e => done.fail(e));
-  });
-
-  it('Should be able to navigate to Register', done => {
-    router.navigate(['Register']).then(() => {
+  it('should be able to navigate to Register', async(() => {
+    router.navigate(['/register']).then(() => {
       expect(location.path()).toBe('/register');
-      done();
-    }).catch(e => done.fail(e));
-  });
+    });
+  }));
+
+  it('should be able to navigate to Login', async(() => {
+    router.navigate(['/login']).then(() => {
+      expect(location.path()).toBe('/login');
+    });
+  }));
 
 });
