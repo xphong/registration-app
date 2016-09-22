@@ -6,6 +6,12 @@
 
 ### Install Depedencies
 
+#### Back-End
+
+```
+mvn clean install
+```
+
 #### Front-End
 
 ```
