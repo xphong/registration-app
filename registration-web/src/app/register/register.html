@@ -2,14 +2,14 @@
   <div id="register-form-control" class="col-xs-12 form-area">
     <h2 class="registration-header">Register</h2>
     <form (ngSubmit)="register()" [formGroup]="form">
-      <div class="help-block error username" *ngIf="username.dirty && !username.valid">
+      <div class="help-block error username" *ngIf="username.touched && !username.valid">
         <p *ngIf="username.errors.required">Username is required</p>
         <p *ngIf="username.errors.startsWithNumber">Username can't start with a number</p>
         <p *ngIf="username.errors.alphaNumericValues">Username accepts alpha-numeric values only</p>
         <p *ngIf="username.errors.minlength">Username has to be at least 5 characters</p>
       </div>
       <input id="register-username-textbox" type="text" class="form-control" placeholder="Username" [formControl]="username">
-      <div class="help-block error password" *ngIf="password.dirty && !password.valid">
+      <div class="help-block error password" *ngIf="password.touched && !password.valid">
         <p *ngIf="password.errors.required">Password is required</p>
         <p *ngIf="password.errors.minlength">Password has to be at least 8 characters</p>
         <p *ngIf="password.errors.validatePassword">Password requires 1 number, 1 uppercase, and 1 lowercase character</p>
