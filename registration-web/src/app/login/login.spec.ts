@@ -1,24 +1,18 @@
-import {
-  it,
-  inject,
-  injectAsync,
-  describe,
-  beforeEachProviders,
-  TestComponentBuilder,
-  resetBaseTestProviders,
-  setBaseTestProviders
-} from 'angular2/testing';
-
-import { TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS } from 'angular2/platform/testing/browser';
+import { Component } from '@angular/core';
+import { async, inject, TestBed } from '@angular/core/testing';
+import { BaseRequestOptions, ConnectionBackend, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
-import { provide } from 'angular2/core';
-import { RootRouter } from 'angular2/src/router/router';
-import { Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from 'angular2/router';
-import { SpyLocation } from 'angular2/src/mock/location_mock';
 
 import { RegistrationService } from '../shared/services/registration';
 import { Login } from './login';
-import { App } from '../app';
+
+@Component({
+  template: ''
+})
+class Register { }
 
 class MockRegistrationService {
   loginUser(user) {
@@ -30,19 +24,22 @@ class MockRegistrationService {
 }
 
 describe('Login', () => {
-  resetBaseTestProviders();
-  setBaseTestProviders(TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS);
+  let mockRegistrationService = new MockRegistrationService();
 
-  let registrationService = new MockRegistrationService();
-
-  beforeEachProviders(() => [
-    Login,
-    RouteRegistry,
-    provide(RegistrationService, { useValue: registrationService }),
-    provide(Location, {useClass: SpyLocation}),
-    provide(Router, {useClass: RootRouter}),
-    provide(ROUTER_PRIMARY_COMPONENT, {useValue: App})
-  ]);
+  beforeEach(() => TestBed.configureTestingModule({
+    declarations: [
+      Login,
+      Register
+    ],
+    providers: [
+      Login,
+      {provide: RegistrationService, useValue: mockRegistrationService }
+    ],
+    imports: [
+      ReactiveFormsModule,
+      RouterTestingModule.withRoutes([ {path: 'register', component: Register} ])
+    ]
+  }));
 
   it('should log ngOnInit', inject([Login], (login) => {
     spyOn(console, 'log');
@@ -52,22 +49,19 @@ describe('Login', () => {
     expect(console.log).toHaveBeenCalled();
   }));
 
-  it('should successfully login', injectAsync([TestComponentBuilder], (tcb) => {
-      return tcb
-        .createAsync(Login)
-        .then(fixture => {
-          let loginComponent = fixture.componentInstance;
+  it('should successfully login', async(() => {
+    let fixture = TestBed.createComponent(Login);
+    let loginComponent = fixture.componentInstance;
 
-          fixture.detectChanges();
+    fixture.detectChanges();
 
-          loginComponent.login({
-            username: 'TestUser1',
-            password: 'TestPassword1'
-          });
+    loginComponent.login({
+      username: 'TestUser1',
+      password: 'TestPassword1'
+    });
 
-          expect(loginComponent.successMessage).toEqual('Login successful');
-          expect(loginComponent.errorMessage).toEqual('');
-        });
-    }));
+    expect(loginComponent.successMessage).toEqual('Login successful');
+    expect(loginComponent.errorMessage).toEqual('');
+  }));
 
 });
