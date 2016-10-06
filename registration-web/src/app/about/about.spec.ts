@@ -1,22 +1,12 @@
-import {
-  it,
-  inject,
-  injectAsync,
-  describe,
-  beforeEachProviders,
-  TestComponentBuilder
-} from 'angular2/testing';
-
-import { Component, provide } from 'angular2/core';
-import { BaseRequestOptions, Http } from 'angular2/http';
+import { Component } from '@angular/core';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { About } from './about';
 
 describe('About', () => {
-  beforeEachProviders(() => [
-    BaseRequestOptions,
-    About
-  ]);
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [ About ]
+  }));
 
   it('should log ngOnInit', inject([About], (about) => {
     spyOn(console, 'log');
