@@ -1,15 +1,10 @@
-import {
-  it,
-  inject,
-  injectAsync,
-  beforeEach,
-  beforeEachProviders,
-  TestComponentBuilder
-} from 'angular2/testing';
-
-import { Component, provide } from 'angular2/core';
-import { BaseRequestOptions, Http, Response, ResponseOptions } from 'angular2/http';
-import { MockBackend } from 'angular2/http/testing';
+import { Component } from '@angular/core';
+import { async, inject, TestBed } from '@angular/core/testing';
+import { BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs/Rx';
 
 import { RegistrationService } from './registration';
 
@@ -31,18 +26,23 @@ describe('RegistrationService', () => {
   const usersUrl = 'http://localhost:8080/api/users';
   const registerUrl = 'http://localhost:8080/api/register';
   const loginUrl = 'http://localhost:8080/api/login';
-
-  beforeEachProviders(() => [
-    BaseRequestOptions,
-    MockBackend,
-    provide(Http, {
-      useFactory: function(backend, defaultOptions) {
-        return new Http(backend, defaultOptions);
-      },
-      deps: [MockBackend, BaseRequestOptions]
-    }),
-    RegistrationService
-  ]);
+  
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      MockBackend,
+      RegistrationService,
+      Http,
+      ConnectionBackend,
+      BaseRequestOptions,
+      {
+        provide: Http,
+        useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
+          return new Http(backend, defaultOptions);
+        },
+        deps: [MockBackend, BaseRequestOptions],
+      }
+    ]
+  }));
 
   beforeEach(inject([ MockBackend, RegistrationService ], (_mockBackend, _registrationService) => {
     mockBackend = _mockBackend;
