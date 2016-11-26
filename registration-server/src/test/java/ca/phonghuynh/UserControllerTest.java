@@ -12,6 +12,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.verify;
@@ -32,14 +36,14 @@ public class UserControllerTest {
     @Test
     public void shouldGetUserById() {
         User user = new User();
-        user.setId(1l);
-        when(userService.getUser(1l)).thenReturn(user);
+        user.setId(1L);
+        when(userService.getUser(1L)).thenReturn(user);
 
-        ResponseEntity<?> results = uc.get(1l);
+        ResponseEntity<?> results = uc.get(1L);
 
         User user1 = (User) results.getBody();
 
-        verify(userService).getUser(1l);
-        assertThat(user1.getId(), is(1l));
+        verify(userService).getUser(1L);
+        assertThat(user1.getId(), is(1L));
     }
 }
