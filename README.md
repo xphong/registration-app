@@ -68,3 +68,4 @@ npm test
 
 ## TODO
 * Write/Improve tests
+* User login to admin pages
