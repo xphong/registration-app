@@ -47,7 +47,7 @@ describe('App', () => {
 
 describe('Router', () => {
 
-  const Routes = [
+  const routes = [
     { path: '',      component: Home },
     { path: 'home',  component: Home },
     { path: 'about', component: About },
@@ -61,7 +61,7 @@ describe('Router', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule.withRoutes(Routes) ],
+      imports: [ RouterTestingModule.withRoutes(routes) ],
       declarations: [
         App,
         Home,

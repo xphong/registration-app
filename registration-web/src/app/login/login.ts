@@ -16,7 +16,7 @@ export class Login {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder, private _router : Router) {
+  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder, private _router: Router) {
     this._createForm();
   }
 
@@ -30,7 +30,7 @@ export class Login {
           if (data) {
             this.errorMessage = '';
             this.successMessage = 'Login successful';
-            this._router.navigate(['/admin/userlist'])
+            this._router.navigate(['/admin/userlist']);
           } else {
             this.errorMessage = 'Error';
             this.successMessage = '';

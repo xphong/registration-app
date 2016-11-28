@@ -30,6 +30,7 @@ class MockRegistrationService {
 
 describe('Login', () => {
   let mockRegistrationService = new MockRegistrationService();
+  let router, location;
 
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
@@ -39,11 +40,14 @@ describe('Login', () => {
     ],
     providers: [
       Login,
-      {provide: RegistrationService, useValue: mockRegistrationService }
+      { provide: RegistrationService, useValue: mockRegistrationService }
     ],
     imports: [
       ReactiveFormsModule,
-      RouterTestingModule.withRoutes([ {path: 'register', component: Register}, {path: 'admin/userlist', component: UserList} ])
+      RouterTestingModule.withRoutes([
+        { path: 'register', component: Register },
+        { path: 'admin/userlist', component: UserList }
+      ])
     ]
   }));
 

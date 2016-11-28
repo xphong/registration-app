@@ -26,7 +26,7 @@ describe('RegistrationService', () => {
   const usersUrl = 'http://localhost:8080/api/users';
   const registerUrl = 'http://localhost:8080/api/register';
   const loginUrl = 'http://localhost:8080/api/login';
-  
+ 
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       MockBackend,
@@ -62,7 +62,7 @@ describe('RegistrationService', () => {
     });
 
     const response = new Response(options);
-    
+
     mockBackend.connections.subscribe(connection => {
       connection.mockRespond(response);
       expect(connection.request.url).toEqual(usersUrl);
