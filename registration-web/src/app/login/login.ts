@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { RegistrationService } from '../shared/services/registration';
 
@@ -15,7 +16,7 @@ export class Login {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder) {
+  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder, private _router : Router) {
     this._createForm();
   }
 
@@ -29,7 +30,7 @@ export class Login {
           if (data) {
             this.errorMessage = '';
             this.successMessage = 'Login successful';
-            this._createForm();
+            this._router.navigate(['/admin/userlist'])
           } else {
             this.errorMessage = 'Error';
             this.successMessage = '';
