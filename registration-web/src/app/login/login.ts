@@ -30,7 +30,7 @@ export class Login {
           if (data) {
             this.errorMessage = '';
             this.successMessage = 'Login successful';
-            this._router.navigate(['/admin/userlist']);
+            // this._router.navigate(['/admin/userlist']);
           } else {
             this.errorMessage = 'Error';
             this.successMessage = '';
