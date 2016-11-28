@@ -4,7 +4,7 @@ import { About } from './about/about';
 import { Home } from './home/home';
 import { Register } from './register/register';
 import { Login } from './login/login';
-import { User } from './admin/user/user';
+import { UserList } from './admin/users/user-list';
 
 import { DataResolver } from './app.resolver';
 
@@ -15,6 +15,6 @@ export const ROUTES: Routes = [
   { path: 'about', component: About },
   { path: 'register', component: Register },
   { path: 'login', component: Login },
-  { path: 'admin/user', component: User },
+  { path: 'admin/userlist', component: UserList },
   { path: '**',    component: Home }
 ];
