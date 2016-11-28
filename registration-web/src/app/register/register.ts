@@ -52,12 +52,10 @@ export class Register {
             this.errorMessage = 'Error';
             this.successMessage = '';
           }
-        },
-        error => {
+        }, error => {
           this.errorMessage = error;
           this.successMessage = '';
-        }
-        );
+        });
   }
 
   _createForm() {

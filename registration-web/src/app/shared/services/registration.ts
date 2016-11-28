@@ -4,9 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import * as AppConstants from '../constants';
+
 @Injectable()
 export class RegistrationService {
-  apiUrl = 'http://localhost:8080/api/';
+  apiUrl = AppConstants.apiUrl;
   apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });

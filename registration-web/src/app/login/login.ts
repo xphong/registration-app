@@ -35,12 +35,10 @@ export class Login {
             this.errorMessage = 'Error';
             this.successMessage = '';
           }
-        },
-        error => {
+        }, error => {
           this.errorMessage = error;
           this.successMessage = '';
-        }
-        );
+        });
   }
 
   _createForm() {
