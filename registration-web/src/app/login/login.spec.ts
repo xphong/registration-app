@@ -14,6 +14,11 @@ import { Login } from './login';
 })
 class Register { }
 
+@Component({
+  template: ''
+})
+class UserList { }
+
 class MockRegistrationService {
   loginUser(user) {
     return Observable.of({
@@ -29,7 +34,8 @@ describe('Login', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       Login,
-      Register
+      Register,
+      UserList
     ],
     providers: [
       Login,
@@ -37,7 +43,7 @@ describe('Login', () => {
     ],
     imports: [
       ReactiveFormsModule,
-      RouterTestingModule.withRoutes([ {path: 'register', component: Register} ])
+      RouterTestingModule.withRoutes([ {path: 'register', component: Register}, {path: 'admin/userlist', component: UserList} ])
     ]
   }));
 

@@ -67,7 +67,8 @@ describe('Router', () => {
         Home,
         About,
         Register,
-        Login
+        Login,
+        UserList
       ]
     })
     .compileComponents();
