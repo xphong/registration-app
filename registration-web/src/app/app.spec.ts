@@ -99,4 +99,10 @@ describe('Router', () => {
     });
   }));
 
+  it('should be able to navigate to Admin User', async(() => {
+    router.navigate(['/admin/user']).then(() => {
+      expect(location.path()).toBe('/admin/user');
+    });
+  }));
+
 });
