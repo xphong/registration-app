@@ -16,6 +16,7 @@ class Register { }
 
 @Component({
   template: ''
+}
 })
 class UserList { }
 
