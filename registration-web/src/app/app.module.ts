@@ -16,7 +16,7 @@ import { About } from './about/about';
 import { Home } from './home/home';
 import { Register } from './register/register';
 import { Login } from './login/login';
-import { UserList } from './admin/users/user-list/user-list';
+import { UserList } from './admin/user-list/user-list';
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,

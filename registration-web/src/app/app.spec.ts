@@ -26,6 +26,11 @@ class Register { }
 })
 class Login { }
 
+@Component({
+  template: ''
+})
+class UserList { }
+
 describe('App', () => {
 
   beforeEach(() => {
@@ -48,6 +53,7 @@ describe('Router', () => {
     { path: 'about', component: About },
     { path: 'register', component: Register },
     { path: 'login', component: Login },
+    { path: 'admin/userlist', component: UserList },
     { path: '**',    component: Home }
   ];
 
