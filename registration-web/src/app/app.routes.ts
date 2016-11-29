@@ -6,9 +6,6 @@ import { Register } from './register/register';
 import { Login } from './login/login';
 import { UserList } from './admin/user-list/user-list';
 
-import { DataResolver } from './app.resolver';
-
-
 export const ROUTES: Routes = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
