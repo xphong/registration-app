@@ -6,10 +6,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
 
-import { RegistrationService } from '../../shared/services/registration';
+import { UsersService } from '../../shared/services/users/users.service';
 import { UserList } from './user-list';
 
-class MockRegistrationService {
+class MockUsersService {
   getUsers() {
     return Observable.of([{
       username: 'TestUser1',
@@ -19,7 +19,7 @@ class MockRegistrationService {
 }
 
 describe('User List', () => {
-  let mockRegistrationService = new MockRegistrationService();
+  let mockUsersService = new MockUsersService();
 
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
@@ -27,7 +27,7 @@ describe('User List', () => {
     ],
     providers: [
       UserList,
-      {provide: RegistrationService, useValue: mockRegistrationService }
+      {provide: UsersService, useValue: mockUsersService }
     ],
     imports: [
       ReactiveFormsModule,

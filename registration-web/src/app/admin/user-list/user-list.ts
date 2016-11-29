@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { RegistrationService } from '../../shared/services/registration';
+import { UsersService } from '../../shared/services/users/users.service';
 
 @Component({
   selector: 'rg-user-list',
@@ -11,7 +11,7 @@ export class UserList {
   noUsersMessage = '';
   errorMessage = '';
 
-  constructor(private _registrationService: RegistrationService) {
+  constructor(private userService: UsersService) {
 
   }
 
@@ -21,7 +21,7 @@ export class UserList {
   }
 
   getUsers() {
-    this._registrationService.getUsers()
+    this.userService.getUsers()
         .subscribe(data => {
           if (data.length) {
             this.users = data;

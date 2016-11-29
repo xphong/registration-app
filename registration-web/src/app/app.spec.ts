@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { async, inject, TestBed } from '@angular/core/testing';
 
 import { App } from './app.component';
+import { AuthService } from './shared/auth/auth.service';
 
 @Component({
   template: ''
@@ -31,22 +32,59 @@ class Login { }
 })
 class UserList { }
 
+class MockAuthService {
+  isLoggedIn() {
+    return true;
+  }
+
+  logout() {
+
+  }
+}
+
 describe('App', () => {
+  let mockAuthService = new MockAuthService();
+  let routerStub, app, authService;
 
   beforeEach(() => {
+    routerStub = {
+      navigate: jasmine.createSpy('navigate')
+    };
+
     TestBed.configureTestingModule({
-      providers: [ App ]
+      providers: [
+        App,
+        { provide: AuthService, useValue: mockAuthService },
+        { provide: Router, useValue: routerStub }
+      ]
     });
   });
 
-  it('should have an app title', inject([ App ], (app) => {
-    expect(app.title).toEqual('Registration App');
+  beforeEach(inject([App, AuthService], (_app: App, _authService: AuthService) => {
+    app = _app;
+    authService = _authService;
   }));
+
+  it('should have an app title', () => {
+    expect(app.title).toEqual('Registration App');
+  });
+
+  it('should have navigate to login', () => {
+    app.navigateToLogin();
+
+    expect(routerStub.navigate).toHaveBeenCalledWith(['login']);
+  });
+
+  it('should logout and redirect to login', () => {
+    app.logout();
+
+    expect(routerStub.navigate).toHaveBeenCalledWith(['login']);
+  });
+
 
 });
 
 describe('Router', () => {
-
   const routes = [
     { path: '',      component: Home },
     { path: 'home',  component: Home },
@@ -57,10 +95,15 @@ describe('Router', () => {
     { path: '**',    component: Home }
   ];
 
+  let mockAuthService = new MockAuthService();
+
   let location, router, fixture;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        { provide: AuthService, useValue: mockAuthService }
+      ],
       imports: [ RouterTestingModule.withRoutes(routes) ],
       declarations: [
         App,

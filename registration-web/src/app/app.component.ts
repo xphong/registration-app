@@ -1,4 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from './shared/auth/auth.service';
 
 @Component({
   selector: 'app',
@@ -11,7 +14,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class App {
   title = 'Registration App';
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
 
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['login']);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 }

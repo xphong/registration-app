@@ -9,9 +9,11 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 import { App } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InteralStateType } from './app.service';
-import { RegistrationService } from './shared/services/registration';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { RegistrationService } from './shared/services/registration/registration.service';
+import { UsersService } from './shared/services/users/users.service';
+import { AuthService } from './shared/auth/auth.service';
 import { About } from './about/about';
 import { Home } from './home/home';
 import { Register } from './register/register';
@@ -19,9 +21,11 @@ import { Login } from './login/login';
 import { UserList } from './admin/user-list/user-list';
 
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
   AppState,
-  RegistrationService
+  RegistrationService,
+  UsersService,
+  AuthService,
+  AuthGuard
 ];
 
 type StoreType = {
