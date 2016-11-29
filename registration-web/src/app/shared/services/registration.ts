@@ -15,7 +15,7 @@ export class RegistrationService {
   loggedIn = false;
 
   constructor(private _http: Http) {
-
+    this.loggedIn = !!localStorage.getItem('auth_token');
   }
 
   getUsers() {
@@ -40,6 +40,7 @@ export class RegistrationService {
     return this._http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
       .map(res => {
+        localStorage.setItem('auth_token', 'abc123');
         this.loggedIn = true;
         return res;
       })
@@ -51,6 +52,7 @@ export class RegistrationService {
   }
 
   logout() {
+    localStorage.removeItem('auth_token');
     this.loggedIn = false;
   }
 
