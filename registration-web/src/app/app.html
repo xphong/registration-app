@@ -21,10 +21,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a (click)=navigateToLogin() *ngIf="!_registrationService.isLoggedIn()">Login</a>
+          <a (click)=navigateToLogin() *ngIf="!authService.isLoggedIn()">Login</a>
         </li>
         <li>
-          <a (click)=_registrationService.logout() *ngIf="_registrationService.isLoggedIn()">Logout</a>
+          <a (click)=logout() *ngIf="authService.isLoggedIn()">Logout</a>
         </li>
       </ul>
     </div>

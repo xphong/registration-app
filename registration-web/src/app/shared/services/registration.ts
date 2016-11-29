@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import * as AppConstants from '../constants';
+import { UtilsService } from '../utils.service';
 
 @Injectable()
 export class RegistrationService {
@@ -12,53 +13,24 @@ export class RegistrationService {
   apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
-  loggedIn = false;
 
-  constructor(private _http: Http) {
-    this.loggedIn = !!localStorage.getItem('auth_token');
+  constructor(private http: Http, private utils: UtilsService) {
+
   }
 
   getUsers() {
     const usersUrl = this.apiUrl + 'users';
 
-    return this._http.get(usersUrl)
+    return this.http.get(usersUrl)
       .map(res => res.json())
-      .catch(this._handleError);
+      .catch(this.utils.handleError);
   }
 
   registerUser(user) {
     const registerUrl = this.apiUrl + 'register';
 
-    return this._http.post(registerUrl, JSON.stringify(user), { headers: this.apiHeaders })
+    return this.http.post(registerUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
-      .catch(this._handleError);
-  }
-
-  loginUser(user) {
-    const loginUrl = this.apiUrl + 'login';
-
-    return this._http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
-      .map(res => res.json())
-      .map(res => {
-        localStorage.setItem('auth_token', 'abc123');
-        this.loggedIn = true;
-        return res;
-      })
-      .catch(this._handleError);
-  }
-
-  isLoggedIn() {
-    return this.loggedIn;
-  }
-
-  logout() {
-    localStorage.removeItem('auth_token');
-    this.loggedIn = false;
-  }
-
-  _handleError(error) {
-    console.error(error);
-
-    return Observable.throw(error.json().message || 'Server error');
+      .catch(this.utils.handleError);
   }
 }

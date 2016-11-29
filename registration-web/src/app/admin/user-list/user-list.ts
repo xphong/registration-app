@@ -11,7 +11,7 @@ export class UserList {
   noUsersMessage = '';
   errorMessage = '';
 
-  constructor(private _registrationService: RegistrationService) {
+  constructor(private registrationService: RegistrationService) {
 
   }
 
@@ -21,7 +21,7 @@ export class UserList {
   }
 
   getUsers() {
-    this._registrationService.getUsers()
+    this.registrationService.getUsers()
         .subscribe(data => {
           if (data.length) {
             this.users = data;
