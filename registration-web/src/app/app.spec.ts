@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { async, inject, TestBed } from '@angular/core/testing';
 
 import { App } from './app.component';
+import { AuthService } from './shared/auth/auth.service';
 
 @Component({
   template: ''
@@ -31,22 +32,31 @@ class Login { }
 })
 class UserList { }
 
+class MockAuthService {
+  isLoggedIn() {
+    return true;
+  }
+}
+
 describe('App', () => {
+  let mockAuthService = new MockAuthService();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ App ]
+      providers: [
+        App,
+        { provide: AuthService, useValue: mockAuthService }
+      ]
     });
   });
 
-  it('should have an app title', inject([ App ], (app) => {
+  it('should have an app title', inject([ App, AuthService ], (app, authService) => {
     expect(app.title).toEqual('Registration App');
   }));
 
 });
 
 describe('Router', () => {
-
   const routes = [
     { path: '',      component: Home },
     { path: 'home',  component: Home },
@@ -57,10 +67,15 @@ describe('Router', () => {
     { path: '**',    component: Home }
   ];
 
+  let mockAuthService = new MockAuthService();
+
   let location, router, fixture;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        { provide: AuthService, useValue: mockAuthService }
+      ],
       imports: [ RouterTestingModule.withRoutes(routes) ],
       declarations: [
         App,

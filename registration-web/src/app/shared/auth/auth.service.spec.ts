@@ -78,4 +78,20 @@ describe('Auth Service', () => {
     });
   });
 
+  it('should return error for login user', done => {
+    const user = {
+      username: 'Test',
+      password: 'test'
+    };
+
+    mockBackend.connections.subscribe(connection => {
+      connection.mockError(new Error('error'));
+      expect(connection.request.url).toEqual(loginUrl);
+    });
+
+    authService.login(user).subscribe(user => user, err => {
+      done();
+    });
+  });
+
 });
