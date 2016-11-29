@@ -18,6 +18,9 @@
         <li>
           <a [routerLink]="['./about']" [routerLinkActive]="['active-link']">About</a>
         </li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a [routerLink]="['./admin/userlist']" [routerLinkActive]="['active-link']">User List</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
