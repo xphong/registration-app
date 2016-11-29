@@ -9,11 +9,11 @@ import { UtilsService } from '../utils.service';
 
 @Injectable()
 export class AuthService {
-  apiHeaders = new Headers({
+  private apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
-  loggedIn = false;
-  token = '';
+  private loggedIn = false;
+  private token = '';
 
   constructor(private http: Http, private utils: UtilsService) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -41,5 +41,9 @@ export class AuthService {
     localStorage.removeItem('auth_token');
     this.loggedIn = false;
     this.token = '';
+  }
+
+  getToken() {
+    return this.token;
   }
 }

@@ -10,8 +10,8 @@ import { Login } from '../login/login';
   template: require('./register.html')
 })
 export class Register {
-  form: FormGroup;
-  username = new FormControl(
+  private form: FormGroup;
+  private username = new FormControl(
     '',
     Validators.compose([
       Validators.required,
@@ -21,7 +21,7 @@ export class Register {
       RegistrationValidator.alphaNumericValues
     ])
   );
-  password = new FormControl('',
+  private password = new FormControl('',
     Validators.compose([
       Validators.required,
       Validators.minLength(8),
@@ -30,11 +30,11 @@ export class Register {
     ])
   );
 
-  errorMessage = '';
-  successMessage = '';
+  private errorMessage = '';
+  private successMessage = '';
 
-  constructor(private _registrationService: RegistrationService, private _formBuilder: FormBuilder) {
-    this._createForm();
+  constructor(private registrationService: RegistrationService, private formBuilder: FormBuilder) {
+    this.createForm();
   }
 
   ngOnInit() {
@@ -42,12 +42,12 @@ export class Register {
   }
 
   register() {
-    this._registrationService.registerUser(this.form.value)
+    this.registrationService.registerUser(this.form.value)
         .subscribe(data => {
           if (data) {
             this.errorMessage = '';
             this.successMessage = 'Account successfully created';
-            this._createForm();
+            this.createForm();
           } else {
             this.errorMessage = 'Error';
             this.successMessage = '';
@@ -58,8 +58,8 @@ export class Register {
         });
   }
 
-  _createForm() {
-    this.form = this._formBuilder.group({
+  createForm() {
+    this.form = this.formBuilder.group({
       username:  this.username,
       password: this.password
     });

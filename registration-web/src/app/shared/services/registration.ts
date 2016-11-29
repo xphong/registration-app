@@ -9,8 +9,8 @@ import { UtilsService } from '../utils.service';
 
 @Injectable()
 export class RegistrationService {
-  apiUrl = AppConstants.apiUrl;
-  apiHeaders = new Headers({
+  private apiUrl = AppConstants.apiUrl;
+  private apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
 
