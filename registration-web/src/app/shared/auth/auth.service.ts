@@ -52,7 +52,10 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     this.loggedIn = false;
-    this.user = {};
+    this.user = {
+      username: '',
+      token: ''
+    };
   }
 
   getUser() {

@@ -36,23 +36,51 @@ class MockAuthService {
   isLoggedIn() {
     return true;
   }
+
+  logout() {
+
+  }
 }
 
 describe('App', () => {
   let mockAuthService = new MockAuthService();
+  let routerStub, app, authService;
 
   beforeEach(() => {
+    routerStub = {
+      navigate: jasmine.createSpy('navigate')
+    };
+
     TestBed.configureTestingModule({
       providers: [
         App,
-        { provide: AuthService, useValue: mockAuthService }
+        { provide: AuthService, useValue: mockAuthService },
+        { provide: Router, useValue: routerStub }
       ]
     });
   });
 
-  it('should have an app title', inject([ App, AuthService ], (app, authService) => {
-    expect(app.title).toEqual('Registration App');
+  beforeEach(inject([App, AuthService], (_app: App, _authService: _authService) => {
+    app = _app;
+    authService = _authService;
   }));
+
+  it('should have an app title', () => {
+    expect(app.title).toEqual('Registration App');
+  });
+
+  it('should have navigate to login', () => {
+    app.navigateToLogin();
+
+    expect(routerStub.navigate).toHaveBeenCalledWith(['login']);
+  });
+
+  it('should logout and redirect to login', () => {
+    app.logout();
+
+    expect(routerStub.navigate).toHaveBeenCalledWith(['login']);
+  });
+
 
 });
 
