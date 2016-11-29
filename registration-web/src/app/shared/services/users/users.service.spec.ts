@@ -48,7 +48,7 @@ describe('Users Service', () => {
   }));
 
   it('should have http', () => {
-    expect(!!usersService._http).toEqual(true);
+    expect(!!usersService.http).toEqual(true);
   });
 
   it('should return users', done => {

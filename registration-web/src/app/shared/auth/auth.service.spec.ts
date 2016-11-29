@@ -23,7 +23,7 @@ describe('Auth Service', () => {
       password: 'TestPassword2'
     }
   ];
-  const usersUrl = 'http://localhost:8080/api/users';
+  const loginUrl = 'http://localhost:8080/api/login';
  
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
@@ -48,7 +48,7 @@ describe('Auth Service', () => {
   }));
 
   it('should have http', () => {
-    expect(!!authService._http).toEqual(true);
+    expect(!!authService.http).toEqual(true);
   });
 
   it('should return login user', done => {

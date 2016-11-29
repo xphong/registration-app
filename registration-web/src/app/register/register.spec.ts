@@ -6,7 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
 
-import { RegistrationService } from '../shared/services/registration';
+import { RegistrationService } from '../shared/services/registration/registration.service';
 import { Register } from './register';
 
 class MockRegistrationService {

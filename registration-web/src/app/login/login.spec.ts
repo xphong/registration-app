@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
-import { RegistrationService } from '../shared/services/registration';
+import { AuthService } from '../shared/auth/auth.service.ts';
 import { Login } from './login';
 
 @Component({
@@ -20,8 +20,8 @@ class Register { }
 })
 class UserList { }
 
-class MockRegistrationService {
-  loginUser(user) {
+class MockAuthService {
+  login(user) {
     return Observable.of({
       username: 'TestUser1',
       password: 'TestPassword1'
@@ -30,7 +30,7 @@ class MockRegistrationService {
 }
 
 describe('Login', () => {
-  let mockRegistrationService = new MockRegistrationService();
+  let mockAuthService = new MockAuthService();
   let routerStub;
 
   beforeEach(() => {
@@ -47,7 +47,7 @@ describe('Login', () => {
       providers: [
         Login,
         { provide: Router, useValue: routerStub },
-        { provide: RegistrationService, useValue: mockRegistrationService }
+        { provide: AuthService, useValue: mockAuthService }
       ],
       imports: [
         ReactiveFormsModule
