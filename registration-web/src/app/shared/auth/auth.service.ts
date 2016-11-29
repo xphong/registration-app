@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private http: Http, private utils: UtilsService) {
     let user = JSON.parse(localStorage.getItem('user'));
     this.user = user;
-    this.loggedIn = !!this.user && !!this.user.token;
+    this.loggedIn = this.user && this.user.token;
   }
 
   login(user) {
@@ -35,7 +35,6 @@ export class AuthService {
           };
 
           localStorage.setItem('user', JSON.stringify(this.user));
-
           this.loggedIn = true;
         }
 

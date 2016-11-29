@@ -12,7 +12,7 @@ import { App } from './app.component';
 import { AppState, InteralStateType } from './app.service';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { UtilsService } from './shared/utils.service';
-import { RegistrationService } from './shared/services/registration';
+import { RegistrationService } from './shared/services/registration/registration.service';
 import { AuthService } from './shared/auth/auth.service';
 import { About } from './about/about';
 import { Home } from './home/home';

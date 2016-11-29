@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { RegistrationService } from '../../shared/services/registration';
+import { RegistrationService } from '../../shared/services/registration/registration.service';
 
 @Component({
   selector: 'rg-user-list',

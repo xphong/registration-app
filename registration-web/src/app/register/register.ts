@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { RegistrationService } from '../shared/services/registration';
+import { RegistrationService } from '../shared/services/registration/registration.service';
 import { RegistrationValidator } from '../shared/validation/registrationvalidator';
 import { Login } from '../login/login';
 

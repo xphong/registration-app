@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import * as AppConstants from '../constants';
-import { UtilsService } from '../utils.service';
+import * as AppConstants from '../../constants';
+import { UtilsService } from '../../utils.service';
 
 @Injectable()
 export class RegistrationService {

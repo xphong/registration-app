@@ -6,7 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
 
-import { RegistrationService } from './registration';
+import { RegistrationService } from './registration.service';
 
 describe('RegistrationService', () => {
 
