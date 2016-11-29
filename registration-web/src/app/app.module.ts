@@ -9,7 +9,6 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 import { App } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InteralStateType } from './app.service';
 import { RegistrationService } from './shared/services/registration';
 import { About } from './about/about';
@@ -19,7 +18,6 @@ import { Login } from './login/login';
 import { UserList } from './admin/user-list/user-list';
 
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
   AppState,
   RegistrationService
 ];
