@@ -8,7 +8,7 @@ import * as AppConstants from '../../constants';
 import { UtilsService } from '../../utils.service';
 
 @Injectable()
-export class RegistrationService {
+export class UsersService {
   private apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
@@ -17,10 +17,10 @@ export class RegistrationService {
 
   }
 
-  registerUser(user) {
-    const registerUrl = AppConstants.apiUrl + 'register';
+  getUsers() {
+    const usersUrl = AppConstants.apiUrl + 'users';
 
-    return this.http.post(registerUrl, JSON.stringify(user), { headers: this.apiHeaders })
+    return this.http.get(usersUrl)
       .map(res => res.json())
       .catch(this.utils.handleError);
   }
