@@ -13,12 +13,15 @@ export class AuthService {
   });
   private loggedIn = false;
   private token = '';
-  private user = {};
+  private user = {
+    username: '',
+    token: ''
+  };
 
   constructor(private http: Http) {
     let user = JSON.parse(localStorage.getItem('user'));
     this.user = user;
-    this.loggedIn = this.user && this.user.token;
+    this.loggedIn = !!this.user && !!this.user.token;
   }
 
   login(user) {
