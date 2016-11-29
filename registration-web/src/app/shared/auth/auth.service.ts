@@ -17,7 +17,8 @@ export class AuthService {
   private user = {};
 
   constructor(private http: Http, private utils: UtilsService) {
-    this.user = localStorage.getItem('user');
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.user = user;
     this.loggedIn = !!this.user && !!this.user.token;
   }
 
@@ -27,14 +28,16 @@ export class AuthService {
     return this.http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
       .map(res => {
-        this.user = {
-          username: res.username,
-          token: 'abc123'
-        };
+        if (res) {
+          this.user = {
+            username: res.username,
+            token: 'abc123'
+          };
 
-        localStorage.setItem('user', this.user);
+          localStorage.setItem('user', JSON.stringify(this.user));
 
-        this.loggedIn = true;
+          this.loggedIn = true;
+        }
 
         return res;
       })
