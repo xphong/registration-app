@@ -5,6 +5,7 @@ import { MockBackend } from '@angular/http/testing';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 import { RegistrationService } from '../shared/services/registration';
 import { Login } from './login';
@@ -16,7 +17,6 @@ class Register { }
 
 @Component({
   template: ''
-}
 })
 class UserList { }
 
@@ -31,26 +31,29 @@ class MockRegistrationService {
 
 describe('Login', () => {
   let mockRegistrationService = new MockRegistrationService();
-  let router, location;
+  let routerStub;
 
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [
-      Login,
-      Register,
-      UserList
-    ],
-    providers: [
-      Login,
-      { provide: RegistrationService, useValue: mockRegistrationService }
-    ],
-    imports: [
-      ReactiveFormsModule,
-      RouterTestingModule.withRoutes([
-        { path: 'register', component: Register },
-        { path: 'admin/userlist', component: UserList }
-      ])
-    ]
-  }));
+  beforeEach(() => {
+    routerStub = {
+      navigate: jasmine.createSpy('navigate')
+    };
+
+    TestBed.configureTestingModule({
+      declarations: [
+        Login,
+        Register,
+        UserList
+      ],
+      providers: [
+        Login,
+        { provide: Router, useValue: routerStub },
+        { provide: RegistrationService, useValue: mockRegistrationService }
+      ],
+      imports: [
+        ReactiveFormsModule
+      ]
+    });
+  });
 
   it('should log ngOnInit', inject([Login], (login) => {
     spyOn(console, 'log');
@@ -73,6 +76,18 @@ describe('Login', () => {
 
     expect(loginComponent.successMessage).toEqual('Login successful');
     expect(loginComponent.errorMessage).toEqual('');
+    expect(routerStub.navigate).toHaveBeenCalledWith(['admin/userlist'])
+  }));
+
+  it('should navigate to register', async(() => {
+    let fixture = TestBed.createComponent(Login);
+    let loginComponent = fixture.componentInstance;
+
+    fixture.detectChanges();
+
+    loginComponent.navigateToRegister();
+
+    expect(routerStub.navigate).toHaveBeenCalledWith(['register'])
   }));
 
 });
