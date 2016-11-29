@@ -1,4 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { RegistrationService } from './shared/services/registration';
 
 @Component({
   selector: 'app',
@@ -11,7 +14,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class App {
   title = 'Registration App';
 
-  constructor() {
+  constructor(private _registrationService: RegistrationService, private _router: Router) {
+    
+  }
 
+  navigateToLogin() {
+    this._router.navigate(['login']);
   }
 }

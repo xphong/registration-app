@@ -4,9 +4,9 @@ import { RegistrationService } from '../services/registration';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private registration: RegistrationService) {}
+  constructor(private _registrationService: RegistrationService) {}
 
   canActivate() {
-    return this.registration.isLoggedIn();
+    return this._registrationService.isLoggedIn();
   }
 }

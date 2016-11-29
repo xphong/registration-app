@@ -19,6 +19,14 @@
           <a [routerLink]="['./about']" [routerLinkActive]="['active-link']">About</a>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a (click)=navigateToLogin() *ngIf="!_registrationService.isLoggedIn()">Login</a>
+        </li>
+        <li>
+          <a (click)=_registrationService.logout() *ngIf="_registrationService.isLoggedIn()">Logout</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
