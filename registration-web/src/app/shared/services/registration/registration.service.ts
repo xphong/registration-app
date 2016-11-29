@@ -5,7 +5,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import * as AppConstants from '../../constants';
-import { UtilsService } from '../../utils.service';
 
 @Injectable()
 export class RegistrationService {
@@ -13,7 +12,7 @@ export class RegistrationService {
     'Content-Type': 'application/json'
   });
 
-  constructor(private http: Http, private utils: UtilsService) {
+  constructor(private http: Http) {
 
   }
 
@@ -22,6 +21,12 @@ export class RegistrationService {
 
     return this.http.post(registerUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
-      .catch(this.utils.handleError);
+      .catch(this.handleError);
+  }
+
+  handleError(error) {
+    console.error(error);
+
+    return Observable.throw(error.json().message || 'Server error');
   }
 }

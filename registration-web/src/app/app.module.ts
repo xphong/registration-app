@@ -11,7 +11,6 @@ import { ROUTES } from './app.routes';
 import { App } from './app.component';
 import { AppState, InteralStateType } from './app.service';
 import { AuthGuard } from './shared/auth/auth.guard';
-import { UtilsService } from './shared/utils.service';
 import { RegistrationService } from './shared/services/registration/registration.service';
 import { UsersService } from './shared/services/users/users.service';
 import { AuthService } from './shared/auth/auth.service';
@@ -23,7 +22,6 @@ import { UserList } from './admin/user-list/user-list';
 
 const APP_PROVIDERS = [
   AppState,
-  UtilsService,
   RegistrationService,
   UsersService,
   AuthService,

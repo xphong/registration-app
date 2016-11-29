@@ -5,7 +5,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import * as AppConstants from '../constants';
-import { UtilsService } from '../utils.service';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +15,7 @@ export class AuthService {
   private token = '';
   private user = {};
 
-  constructor(private http: Http, private utils: UtilsService) {
+  constructor(private http: Http) {
     let user = JSON.parse(localStorage.getItem('user'));
     this.user = user;
     this.loggedIn = this.user && this.user.token;
@@ -40,7 +39,7 @@ export class AuthService {
 
         return res;
       })
-      .catch(this.utils.handleError);
+      .catch(this.handleError);
   }
 
   isLoggedIn() {
@@ -55,5 +54,11 @@ export class AuthService {
 
   getUser() {
     return this.user;
+  }
+
+  handleError(error) {
+    console.error(error);
+
+    return Observable.throw(error.json().message || 'Server error');
   }
 }
