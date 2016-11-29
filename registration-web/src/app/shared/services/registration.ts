@@ -12,6 +12,7 @@ export class RegistrationService {
   apiHeaders = new Headers({
     'Content-Type': 'application/json'
   });
+  loggedIn = false;
 
   constructor(private _http: Http) {
 
@@ -38,7 +39,19 @@ export class RegistrationService {
 
     return this._http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
+      .map(res => {
+        this.loggedIn = true;
+        return res;
+      })
       .catch(this._handleError);
+  }
+
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  logout() {
+    this.loggedIn = false;
   }
 
   _handleError(error) {
