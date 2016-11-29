@@ -24,7 +24,7 @@ describe('Users Service', () => {
     }
   ];
   const usersUrl = 'http://localhost:8080/api/users';
- 
+
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       MockBackend,

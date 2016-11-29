@@ -5,14 +5,14 @@ import { Home } from './home';
 import { AuthService } from '../shared/auth/auth.service';
 
 class MockAuthService {
-  
+
 }
 
 describe('Home', () => {
   let mockAuthService = new MockAuthService();
 
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [ 
+    providers: [
       Home,
       { provide: AuthService, useValue: mockAuthService }
     ]

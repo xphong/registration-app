@@ -69,14 +69,11 @@ describe('Login', () => {
 
     fixture.detectChanges();
 
-    loginComponent.login({
-      username: 'TestUser1',
-      password: 'TestPassword1'
-    });
+    loginComponent.login();
 
     expect(loginComponent.successMessage).toEqual('Login successful');
     expect(loginComponent.errorMessage).toEqual('');
-    expect(routerStub.navigate).toHaveBeenCalledWith(['admin/userlist'])
+    expect(routerStub.navigate).toHaveBeenCalledWith(['admin/userlist']);
   }));
 
   it('should navigate to register', async(() => {
@@ -87,7 +84,7 @@ describe('Login', () => {
 
     loginComponent.navigateToRegister();
 
-    expect(routerStub.navigate).toHaveBeenCalledWith(['register'])
+    expect(routerStub.navigate).toHaveBeenCalledWith(['register']);
   }));
 
 });

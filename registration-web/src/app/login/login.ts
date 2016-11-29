@@ -9,12 +9,12 @@ import { AuthService } from '../shared/auth/auth.service';
   templateUrl: './login.html'
 })
 export class Login {
+  public errorMessage = '';
+  public successMessage = '';
+
   private form: FormGroup;
   private username = new FormControl('', Validators.required);
   private password = new FormControl('', Validators.required);
-
-  private errorMessage = '';
-  private successMessage = '';
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
     this.createForm();

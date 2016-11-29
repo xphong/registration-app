@@ -24,7 +24,7 @@ describe('Auth Service', () => {
     }
   ];
   const loginUrl = 'http://localhost:8080/api/login';
- 
+
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       MockBackend,
@@ -89,7 +89,7 @@ describe('Auth Service', () => {
       expect(connection.request.url).toEqual(loginUrl);
     });
 
-    authService.login(user).subscribe(user => user, err => {
+    authService.login(user).subscribe(data => data, err => {
       done();
     });
   });

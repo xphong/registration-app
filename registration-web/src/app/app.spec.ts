@@ -60,7 +60,7 @@ describe('App', () => {
     });
   });
 
-  beforeEach(inject([App, AuthService], (_app: App, _authService: _authService) => {
+  beforeEach(inject([App, AuthService], (_app: App, _authService: AuthService) => {
     app = _app;
     authService = _authService;
   }));

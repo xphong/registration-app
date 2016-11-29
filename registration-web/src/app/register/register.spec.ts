@@ -49,10 +49,7 @@ describe('Register', () => {
 
     fixture.detectChanges();
 
-    registerComponent.register({
-      username: 'TestUser1',
-      password: 'TestPassword1'
-    });
+    registerComponent.register();
 
     expect(registerComponent.successMessage).toEqual('Account successfully created');
     expect(registerComponent.errorMessage).toEqual('');

@@ -10,6 +10,9 @@ import { Login } from '../login/login';
   template: require('./register.html')
 })
 export class Register {
+  public errorMessage = '';
+  public successMessage = '';
+
   private form: FormGroup;
   private username = new FormControl(
     '',
@@ -29,9 +32,6 @@ export class Register {
       RegistrationValidator.validatePassword
     ])
   );
-
-  private errorMessage = '';
-  private successMessage = '';
 
   constructor(private registrationService: RegistrationService, private formBuilder: FormBuilder) {
     this.createForm();

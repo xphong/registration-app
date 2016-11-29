@@ -24,7 +24,7 @@ describe('Registration Service', () => {
     }
   ];
   const registerUrl = 'http://localhost:8080/api/register';
- 
+
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       MockBackend,

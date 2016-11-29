@@ -15,7 +15,7 @@ export class App {
   title = 'Registration App';
 
   constructor(private authService: AuthService, private router: Router) {
-    
+
   }
 
   navigateToLogin() {
