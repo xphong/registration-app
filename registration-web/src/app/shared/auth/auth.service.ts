@@ -14,10 +14,11 @@ export class AuthService {
   });
   private loggedIn = false;
   private token = '';
+  private user = {};
 
   constructor(private http: Http, private utils: UtilsService) {
-    this.loggedIn = !!localStorage.getItem('auth_token');
-    this.token = localStorage.getItem('auth_token');
+    this.user = localStorage.getItem('user');
+    this.loggedIn = !!this.user && !!this.user.token;
   }
 
   login(user) {
@@ -26,8 +27,15 @@ export class AuthService {
     return this.http.post(loginUrl, JSON.stringify(user), { headers: this.apiHeaders })
       .map(res => res.json())
       .map(res => {
-        localStorage.setItem('auth_token', 'abc123');
+        this.user = {
+          username: res.username,
+          token: 'abc123'
+        };
+
+        localStorage.setItem('user', this.user);
+
         this.loggedIn = true;
+
         return res;
       })
       .catch(this.utils.handleError);
@@ -38,12 +46,12 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user');
     this.loggedIn = false;
-    this.token = '';
+    this.user = {};
   }
 
-  getToken() {
-    return this.token;
+  getUser() {
+    return this.user;
   }
 }
