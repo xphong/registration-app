@@ -10,6 +10,7 @@ import { ROUTES } from './app.routes';
 
 import { App } from './app.component';
 import { AppState, InteralStateType } from './app.service';
+import { AuthGuard } from './shared/auth/auth.guard';
 import { RegistrationService } from './shared/services/registration';
 import { About } from './about/about';
 import { Home } from './home/home';
@@ -19,7 +20,8 @@ import { UserList } from './admin/user-list/user-list';
 
 const APP_PROVIDERS = [
   AppState,
-  RegistrationService
+  RegistrationService,
+  AuthGuard
 ];
 
 type StoreType = {
